@@ -19,8 +19,8 @@ class AudioSocketClient:
     PHRASE_TIME_LIMIT = 2
     # How long you need to stop speaking to be considered an entire phrase
     PAUSE_THRESHOLD = 0.8
-    # Volume for the microphone
-    RECORDER_ENERGY_THRESHOLD = 1000
+    # Volume for the microphone (降低阈值以提高敏感度)
+    RECORDER_ENERGY_THRESHOLD = 300
     def __init__(self) -> None:
         # Prompt the user to select their devices
         self.input_device_index, self.output_device_index = sd.default.device
@@ -139,7 +139,7 @@ class AudioSocketClient:
                 self.time_first_received = None
 
 if __name__ == "__main__":
-    date_str = datetime.now(timezone.utc)
+    date_str = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
     logging.basicConfig(filename=f"logs/{date_str}-output.log",
                         encoding='utf-8',
                         level=logging.DEBUG)

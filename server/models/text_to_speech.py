@@ -11,8 +11,13 @@ class TextToSpeechModel:
         asynchronously. Alternatively use the synthesise_blocking function. 
     """
     def __init__(self, callback_function):
-        self.device = "cuda:0" if torch.cuda.is_available() else "cpu"
-        print(f"Device used for TextToSpeech: {self.device}")
+        # 强制使用GPU加速TTS
+        if torch.cuda.is_available():
+            self.device = "cuda:0"
+            print(f"🚀 TTS using GPU: {torch.cuda.get_device_name(0)}")
+        else:
+            self.device = "cpu"
+            print("⚠️  TTS using CPU (GPU not available)")
         self.processor = SpeechT5Processor.from_pretrained("microsoft/speecht5_tts",
                                                            normalize=True)
 
