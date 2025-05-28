@@ -17,6 +17,9 @@ SpeechRecognition
 torch
 git+https://github.com/openai/whisper.git
 
+# GPT-SoVITS client
+gradio_client
+
 # Jupyter notebooks
 ipython
 ipykernel

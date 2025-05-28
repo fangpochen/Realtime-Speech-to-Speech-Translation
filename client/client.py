@@ -16,9 +16,9 @@ class AudioSocketClient:
     RATE = 16000
     CHUNK = 4096
     # Used for Speech Recognition library - set this higher for non-English languages
-    PHRASE_TIME_LIMIT = 2
+    PHRASE_TIME_LIMIT = 3  # 增加到3秒，给更多时间说话
     # How long you need to stop speaking to be considered an entire phrase
-    PAUSE_THRESHOLD = 0.8
+    PAUSE_THRESHOLD = 1.0  # 增加停顿检测时间，更容易检测到停顿
     # Volume for the microphone (降低阈值以提高敏感度)
     RECORDER_ENERGY_THRESHOLD = 300
     def __init__(self) -> None:
@@ -74,7 +74,7 @@ class AudioSocketClient:
         # Start microphone
         self.recorder.listen_in_background(self.source,
                                            self.record_callback,
-                                           phrase_time_limit=None)
+                                           phrase_time_limit=self.PHRASE_TIME_LIMIT)
          ## Open audio as input from microphone
         print('''Listening now...\nNote: The input microphone records
               in very large packets, so the volume meter won't move as much.''')
