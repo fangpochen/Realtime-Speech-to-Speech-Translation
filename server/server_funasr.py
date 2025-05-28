@@ -108,50 +108,96 @@ class AudioSocketServerFunASR:
             print("⚠️  翻译结果为空，跳过语音合成")
 
     def gpt_sovits_synthesize(self, text: str, text_language: str = "en"):
-        """调用GPT-SoVITS API进行语音合成"""
+        """调用GPT-SoVITS /inference API进行语音合成"""
         if not self.gpt_sovits_client:
             print("❌ GPT-SoVITS客户端未初始化，无法进行语音合成。")
             return None
         try:
-            print(f"🔊 开始GPT-SoVITS合成: '{text}'")
+            print(f"🔊 开始GPT-SoVITS合成 (API: /inference): '{text}'")
             
             # 根据目标语言设置参考音频语言
-            prompt_language = self.gpt_config.get_language("zh")  # 参考音频是中文
-            target_language = self.gpt_config.get_language(text_language)
+            prompt_language_literal = self.gpt_config.get_language("zh")  # 参考音频是中文
+            text_language_literal = self.gpt_config.get_language(text_language) # 目标合成语言
             
-            # 调用GPT-SoVITS API
-            result = self.gpt_sovits_client.predict(
-                ref_wav_path=file(self.ref_wav_path),
-                prompt_text=self.ref_text,
-                prompt_language=prompt_language,
+            # 从 self.gpt_config 获取参数，如果属性不存在则使用默认值
+            # 这些默认值应与 /inference API 的默认值或您的期望相匹配
+            ref_audio_path_to_use = self.ref_wav_path # 旧的属性名，但路径应指向主参考
+            prompt_text_to_use = self.ref_text
+
+            top_k_to_use = getattr(self.gpt_config, 'top_k', 5) 
+            top_p_to_use = getattr(self.gpt_config, 'top_p', 1.0)
+            temperature_to_use = getattr(self.gpt_config, 'temperature', 1.0)
+            
+            # 映射旧参数名到新参数名，并从config获取或使用默认值
+            text_split_method_to_use = getattr(self.gpt_config, 'text_split_method', getattr(self.gpt_config, 'how_to_cut', "凑四句一切"))
+            speed_factor_to_use = getattr(self.gpt_config, 'speed_factor', getattr(self.gpt_config, 'speed', 1.0))
+            ref_text_free_to_use = getattr(self.gpt_config, 'ref_text_free', getattr(self.gpt_config, 'ref_free', False))
+            fragment_interval_to_use = getattr(self.gpt_config, 'fragment_interval', getattr(self.gpt_config, 'pause_second', 0.3))
+            
+            # 新 /inference API 特定参数
+            seed_to_use = float(getattr(self.gpt_config, 'seed', -1.0)) # 确保是float
+            keep_random_to_use = getattr(self.gpt_config, 'keep_random', True)
+            sample_steps_to_use = str(getattr(self.gpt_config, 'sample_steps', "32")) # 确保是str
+
+            # 其他 /inference API 参数 (当前从 config 获取或使用硬编码的 API 默认值)
+            # 用户可能希望将这些也加入 GPTSoVITSConfig
+            batch_size_to_use = getattr(self.gpt_config, 'batch_size', 20.0)
+            split_bucket_to_use = getattr(self.gpt_config, 'split_bucket', True)
+            parallel_infer_to_use = getattr(self.gpt_config, 'parallel_infer', True)
+            repetition_penalty_to_use = getattr(self.gpt_config, 'repetition_penalty', 1.35)
+            super_sampling_to_use = getattr(self.gpt_config, 'super_sampling', getattr(self.gpt_config, 'if_sr', False))
+
+
+            print(f"   [GPT-SoVITS Params] Seed: {seed_to_use}, KeepRandom: {keep_random_to_use}, Temp: {temperature_to_use}")
+            print(f"   [GPT-SoVITS Params] TopK: {top_k_to_use}, TopP: {top_p_to_use}, SampleSteps: {sample_steps_to_use}")
+
+            # 调用GPT-SoVITS /inference API
+            result_tuple = self.gpt_sovits_client.predict(
                 text=text,
-                text_language=target_language,
-                how_to_cut=self.gpt_config.how_to_cut,
-                top_k=self.gpt_config.top_k,
-                top_p=self.gpt_config.top_p,
-                temperature=self.gpt_config.temperature,
-                ref_free=self.gpt_config.ref_free,
-                speed=self.gpt_config.speed,
-                if_freeze=self.gpt_config.if_freeze,
-                inp_refs=None,
-                sample_steps=self.gpt_config.sample_steps,
-                if_sr=self.gpt_config.if_sr,
-                pause_second=self.gpt_config.pause_second,
-                api_name="/get_tts_wav"
+                text_lang=text_language_literal, # 使用转换后的字面量
+                ref_audio_path=file(ref_audio_path_to_use), # 参数名更改
+                aux_ref_audio_paths=[], # 必需参数，默认为空列表
+                prompt_text=prompt_text_to_use,
+                prompt_lang=prompt_language_literal, # 使用转换后的字面量
+                top_k=top_k_to_use,
+                top_p=top_p_to_use,
+                temperature=temperature_to_use,
+                text_split_method=text_split_method_to_use, # 参数名更改
+                speed_factor=speed_factor_to_use, # 参数名更改
+                ref_text_free=ref_text_free_to_use, # 新参数 (或旧参数映射)
+                split_bucket=split_bucket_to_use, # 新参数
+                fragment_interval=fragment_interval_to_use, # 新参数 (或旧参数映射)
+                seed=seed_to_use, # 新参数
+                keep_random=keep_random_to_use, # 新参数
+                parallel_infer=parallel_infer_to_use, # 新参数
+                repetition_penalty=repetition_penalty_to_use, # 新参数
+                sample_steps=sample_steps_to_use, # 参数类型可能变化，确保是str
+                super_sampling=super_sampling_to_use, # 新参数 (或旧参数映射)
+                batch_size=batch_size_to_use, # 新参数
+                api_name="/inference" # 明确指定新的API端点
             )
             
-            # 读取生成的音频文件
-            if result and os.path.exists(result):
-                with open(result, 'rb') as f:
-                    audio_data = f.read()
-                print(f"🔊 GPT-SoVITS合成完成: '{text}' 音频大小: {len(audio_data)} bytes")
-                return audio_data
+            # 处理 /inference API 的返回结果 (filepath, seed_float)
+            if isinstance(result_tuple, tuple) and len(result_tuple) == 2:
+                output_audio_path, returned_seed = result_tuple
+                print(f"   [GPT-SoVITS API] Returned audio path: {output_audio_path}, Returned seed: {returned_seed}")
+                if output_audio_path and os.path.exists(output_audio_path):
+                    with open(output_audio_path, 'rb') as f:
+                        audio_data = f.read()
+                    print(f"🔊 GPT-SoVITS合成完成: '{text}' 音频大小: {len(audio_data)} bytes, 使用Seed: {returned_seed}")
+                    # os.remove(output_audio_path) # 可选：删除服务端的临时文件
+                    return audio_data
+                else:
+                    print(f"❌ GPT-SoVITS /inference API返回无效音频路径: {output_audio_path}")
+                    return None
             else:
-                print(f"❌ GPT-SoVITS API返回无效结果: {result}")
+                print(f"❌ GPT-SoVITS /inference API返回结果格式不符合预期 (应为元组): {result_tuple}")
                 return None
                 
         except Exception as e:
-            print(f"❌ GPT-SoVITS合成失败: {e}")
+            print(f"❌ GPT-SoVITS合成失败 (调用/inference): {e}")
+            import traceback
+            traceback.print_exc() # 打印更详细的错误堆栈
             return None
 
     def stream_audio_to_client(self, audio_data: bytes, client_socket):
@@ -217,21 +263,33 @@ class AudioSocketServerFunASR:
         self.gpt_config.update_config(**kwargs)
         
     def get_gpt_sovits_config(self):
-        """获取当前GPT-SoVITS配置"""
+        """获取当前GPT-SoVITS配置 (适配 /inference API)"""
         config_dict = {
             'api_url': self.gpt_config.api_url,
             'ref_wav_path': self.gpt_config.ref_wav_path,
             'ref_text_path': self.gpt_config.ref_text_path,
-            'how_to_cut': self.gpt_config.how_to_cut,
+            
+            # /inference API 参数
             'top_k': self.gpt_config.top_k,
             'top_p': self.gpt_config.top_p,
             'temperature': self.gpt_config.temperature,
-            'ref_free': self.gpt_config.ref_free,
-            'speed': self.gpt_config.speed,
-            'if_freeze': self.gpt_config.if_freeze,
-            'sample_steps': self.gpt_config.sample_steps,
-            'if_sr': self.gpt_config.if_sr,
-            'pause_second': self.gpt_config.pause_second
+            'sample_steps': self.gpt_config.sample_steps, # str
+            
+            'text_split_method': self.gpt_config.text_split_method,
+            'fragment_interval': self.gpt_config.fragment_interval,
+            
+            'speed_factor': self.gpt_config.speed_factor,
+            'seed': self.gpt_config.seed, # float
+            'keep_random': self.gpt_config.keep_random, # bool
+            
+            'ref_text_free': self.gpt_config.ref_text_free,
+            'super_sampling': self.gpt_config.super_sampling,
+            
+            # 高级/性能参数
+            'batch_size': self.gpt_config.batch_size,
+            'split_bucket': self.gpt_config.split_bucket,
+            'parallel_infer': self.gpt_config.parallel_infer,
+            'repetition_penalty': self.gpt_config.repetition_penalty,
         }
         return config_dict
 

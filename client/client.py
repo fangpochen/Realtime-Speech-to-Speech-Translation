@@ -91,15 +91,24 @@ class AudioSocketClient:
                     # This is where we will receive data from the server
                     packet = self.socket.recv(self.CHUNK)
                     if packet:
-                        audio_chunk = np.frombuffer(packet, dtype=np.float32)
+                        # 服务端发送的是原始PCM数据，通常是int16
+                        audio_chunk_int16 = np.frombuffer(packet, dtype=np.int16)
+                        
+                        # convert_and_normalize 函数来自 utils.print_audio
+                        # 它将 int16 数组转换为归一化的 float32 数组 (范围通常是 -1.0 到 1.0)
+                        audio_chunk_float32_normalized = convert_and_normalize(audio_chunk_int16)
+                        
                         self.time_last_received = time.time()
                         if not self.time_first_received:
                             logging.debug("First audio packet - time: %f",
                                           self.time_last_received - self.time_last_sent)
                             self.time_first_received = self.time_last_received
-                        # Speech T5 Output always has a sample rate of 16000
-                        audio_output.write(audio_chunk)
-                        self.volume_output = get_volume_norm(audio_chunk)
+                        
+                        # audio_output 配置为接收 float32，所以我们写入归一化后的数据
+                        audio_output.write(audio_chunk_float32_normalized)
+                        
+                        # 音量计算也应该基于归一化的 float32 数据
+                        self.volume_output = get_volume_norm(audio_chunk_float32_normalized)
             except ConnectionResetError:
                 print("Server connection reset - shutting down client")
             except KeyboardInterrupt:
