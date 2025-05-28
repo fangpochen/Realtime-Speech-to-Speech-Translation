@@ -2,7 +2,8 @@
 import requests
 import json
 from typing import Optional
-from googletrans import Translator as GoogleTranslator
+# from googletrans import Translator as GoogleTranslator # 旧的导入
+from deep_translator import GoogleTranslator as DeepGoogleTranslator # 新的导入
 
 class Translator:
     """翻译器类，支持多种翻译服务"""
@@ -10,29 +11,35 @@ class Translator:
     def __init__(self, service="google"):
         self.service = service
         if service == "google":
-            self.google_translator = GoogleTranslator()
+            try:
+                # 初始化 deep-translator 的 GoogleTranslator
+                self.google_translator = DeepGoogleTranslator(source='auto', target='en')
+                print("✅ Deep Translator (Google) 初始化成功")
+            except Exception as e:
+                print(f"❌ Deep Translator (Google) 初始化失败: {e}")
+                self.google_translator = None
         
     def translate_to_english(self, text: str) -> str:
-        """将中文翻译为英文"""
+        """将文本翻译为英文"""
         if not text or not text.strip():
             return ""
             
         try:
-            if self.service == "google":
-                # 使用Google翻译API
-                result = self.google_translator.translate(text, dest='en')
-                return result.text
+            if self.service == "google" and self.google_translator:
+                # 使用 deep-translator进行翻译
+                translated_text = self.google_translator.translate(text)
+                return translated_text if translated_text else ""
             elif self.service == "baidu":
                 return self._baidu_translate(text, "zh", "en")
             else:
                 # 简单的本地翻译映射（作为备选）
                 return self._simple_translate(text)
         except Exception as e:
-            print(f"Translation error: {e}")
+            print(f"Translation error with service '{self.service}': {e}")
             return text  # 翻译失败时返回原文
     
     def _google_translate(self, text: str, source: str, target: str) -> str:
-        """使用Google翻译API"""
+        """使用Google翻译API (旧的requests方法，保留作为参考或备用)"""
         # 使用免费的Google翻译接口
         url = "https://translate.googleapis.com/translate_a/single"
         params = {

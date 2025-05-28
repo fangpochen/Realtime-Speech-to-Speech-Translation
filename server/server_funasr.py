@@ -48,7 +48,14 @@ class AudioSocketServerFunASR:
         print(f"🚀 连接到GPT-SoVITS API: {self.gpt_config.api_url}")
         
         # 初始化Gradio客户端
-        self.gpt_sovits_client = Client(self.gpt_config.api_url)
+        try:
+            self.gpt_sovits_client = Client(self.gpt_config.api_url, ssl_verify=False)
+            print("✅ Gradio Client 初始化成功 (SSL验证已禁用)")
+        except Exception as e:
+            print(f"❌ Gradio Client 初始化失败: {e}")
+            print("   请检查Gradio服务是否正在运行，以及SSL_CERT_FILE环境变量是否正确设置（如果未使用ssl_verify=False）。")
+            # 可以选择在这里抛出异常或允许服务器继续运行但TTS功能受限
+            self.gpt_sovits_client = None # 标记客户端不可用
         
         # 参考音频配置
         self.ref_wav_path = os.path.abspath(self.gpt_config.ref_wav_path)
@@ -102,6 +109,9 @@ class AudioSocketServerFunASR:
 
     def gpt_sovits_synthesize(self, text: str, text_language: str = "en"):
         """调用GPT-SoVITS API进行语音合成"""
+        if not self.gpt_sovits_client:
+            print("❌ GPT-SoVITS客户端未初始化，无法进行语音合成。")
+            return None
         try:
             print(f"🔊 开始GPT-SoVITS合成: '{text}'")
             

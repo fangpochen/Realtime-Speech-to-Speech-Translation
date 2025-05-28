@@ -20,7 +20,7 @@ class GPTSoVITSConfig:
         self.ref_free = False
         self.speed = 1
         self.if_freeze = False
-        self.sample_steps = "8"  # 可选: '4', '8', '16', '32'
+        self.sample_steps = 8  # 可选: 4, 8, 16, 32 (整数类型)
         self.if_sr = False
         self.pause_second = 0.3
         
