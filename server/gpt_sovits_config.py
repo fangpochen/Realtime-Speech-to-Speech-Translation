@@ -12,31 +12,31 @@ class GPTSoVITSConfig:
         self.ref_wav_path = "server/tts_wav/1.wav"  # 主参考音频路径
         self.ref_text_path = "server/tts_wav/1.txt" # 主参考音频的文本路径
         
-        # /inference API 语音合成参数
+        # /inference API 语音合成参数 (根据用户截图更新)
         # 核心采样参数
-        self.top_k = 5               # int, API Default: 5
-        self.top_p = 0.9             # float, User-specified value (was 1.0)
-        self.temperature = 0.5       # float, User-specified value (was 1.0)
-        self.sample_steps = "64"     # str, User-specified value (was "32"), Literal['4', '8', '16', '32', '64', '128']
+        self.top_k = 15               # int, Screenshot: 15 (API Default: 5)
+        self.top_p = 1.0             # float, Screenshot: 1 (API Default: 1.0)
+        self.temperature = 1.0       # float, Screenshot: 1 (API Default: 1.0)
+        self.sample_steps = "8"      # str, Screenshot: 8 (API Default: "32")
         
         # 文本处理与切分
-        self.text_split_method = "按英文句号.切" # str, User-specified value (was "凑四句一切")
-        self.fragment_interval = 0.3   # float, API Default: 0.3
+        self.text_split_method = "凑四句一切" # str, Screenshot: "凑四句一切" (API Default: "凑四句一切")
+        self.fragment_interval = 0.5   # float, Screenshot: 0.5 (API Default: 0.3)
 
         # 语速与随机性控制
-        self.speed_factor = 1.0      # float, API Default: 1.0
-        self.seed = 2061951312.0     # float, User-specified value (was -1.0)
-        self.keep_random = True      # bool, API Default: True
+        self.speed_factor = 1.0      # float, Screenshot: 1 (API Default: 1.0)
+        self.seed = 938619027.0    # float, Screenshot: 938619027 (API Default: -1.0)
+        self.keep_random = True      # bool, Screenshot: True (API Default: True)
 
         # 参考模式与超分
-        self.ref_text_free = False   # bool, API Default: False
-        self.super_sampling = False  # bool, API Default: False
+        self.ref_text_free = False   # bool, (Not directly in screenshot's main params, assume API default or previous state)
+        self.super_sampling = False  # bool, Screenshot: False (API Default: False)
 
-        # 高级/性能参数 (通常可使用API默认值，但提供配置选项)
-        self.batch_size = 20.0         # float, API Default: 20.0
-        self.split_bucket = True       # bool, API Default: True
-        self.parallel_infer = True     # bool, API Default: True
-        self.repetition_penalty = 1.35 # float, API Default: 1.35
+        # 高级/性能参数
+        self.batch_size = 25.0         # float, Screenshot: 25 (API Default: 20.0)
+        self.split_bucket = True       # bool, Screenshot: True (API Default: True)
+        self.parallel_infer = True     # bool, Screenshot: True (API Default: True)
+        self.repetition_penalty = 1.35 # float, Screenshot: 1.35 (API Default: 1.35)
         
         # 语言映射
         self.language_mapping = {

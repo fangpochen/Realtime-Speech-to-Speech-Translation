@@ -9,6 +9,7 @@ import requests
 import numpy as np
 import urllib.parse
 import os
+import struct
 from gradio_client import Client, file
 from models.speech_recognition_funasr import FunASRSpeechRecognitionModel
 from models.translator import Translator
@@ -101,9 +102,9 @@ class AudioSocketServerFunASR:
         if translated_text and translated_text.strip():
             print(f"🔊 开始GPT-SoVITS语音合成...")
             # 使用GPT-SoVITS合成英文语音
-            audio_data = self.gpt_sovits_synthesize(translated_text, "en")
+            audio_data, original_text_for_filename = self.gpt_sovits_synthesize(translated_text, "en")
             if audio_data:
-                self.stream_audio_to_client(audio_data, client_socket)
+                self.stream_audio_to_client(audio_data, client_socket, original_text_for_filename)
         else:
             print("⚠️  翻译结果为空，跳过语音合成")
 
@@ -111,113 +112,151 @@ class AudioSocketServerFunASR:
         """调用GPT-SoVITS /inference API进行语音合成"""
         if not self.gpt_sovits_client:
             print("❌ GPT-SoVITS客户端未初始化，无法进行语音合成。")
-            return None
+            return None, None
         try:
             print(f"🔊 开始GPT-SoVITS合成 (API: /inference): '{text}'")
             
-            # 根据目标语言设置参考音频语言
-            prompt_language_literal = self.gpt_config.get_language("zh")  # 参考音频是中文
-            text_language_literal = self.gpt_config.get_language(text_language) # 目标合成语言
+            prompt_language_literal = self.gpt_config.get_language("zh")
+            text_language_literal = self.gpt_config.get_language(text_language)
             
-            # 从 self.gpt_config 获取参数，如果属性不存在则使用默认值
-            # 这些默认值应与 /inference API 的默认值或您的期望相匹配
-            ref_audio_path_to_use = self.ref_wav_path # 旧的属性名，但路径应指向主参考
-            prompt_text_to_use = self.ref_text
-
-            top_k_to_use = getattr(self.gpt_config, 'top_k', 5) 
-            top_p_to_use = getattr(self.gpt_config, 'top_p', 1.0)
-            temperature_to_use = getattr(self.gpt_config, 'temperature', 1.0)
+            ref_audio_path_to_use = self.ref_wav_path
             
-            # 映射旧参数名到新参数名，并从config获取或使用默认值
-            text_split_method_to_use = getattr(self.gpt_config, 'text_split_method', getattr(self.gpt_config, 'how_to_cut', "凑四句一切"))
-            speed_factor_to_use = getattr(self.gpt_config, 'speed_factor', getattr(self.gpt_config, 'speed', 1.0))
-            ref_text_free_to_use = getattr(self.gpt_config, 'ref_text_free', getattr(self.gpt_config, 'ref_free', False))
-            fragment_interval_to_use = getattr(self.gpt_config, 'fragment_interval', getattr(self.gpt_config, 'pause_second', 0.3))
+            # 从 ref_text_path 读取参考文本
+            prompt_text_to_use = ""
+            if os.path.exists(self.ref_text_path):
+                with open(self.ref_text_path, 'r', encoding='utf-8') as f:
+                    prompt_text_to_use = f.read().strip()
+            else:
+                print(f"⚠️ 参考文本文件未找到: {self.ref_text_path}, 使用空字符串。")
+
+            params_to_api = {
+                "text": text,
+                "text_lang": text_language_literal,
+                "ref_audio_path": file(ref_audio_path_to_use),
+                "aux_ref_audio_paths": [], # 根据API定义，如果不需要则为空列表
+                "prompt_text": prompt_text_to_use,
+                "prompt_lang": prompt_language_literal,
+                "top_k": self.gpt_config.top_k,
+                "top_p": self.gpt_config.top_p,
+                "temperature": self.gpt_config.temperature,
+                "text_split_method": self.gpt_config.text_split_method,
+                "batch_size": self.gpt_config.batch_size,
+                "speed_factor": self.gpt_config.speed_factor,
+                "ref_text_free": self.gpt_config.ref_text_free,
+                "split_bucket": self.gpt_config.split_bucket,
+                "fragment_interval": self.gpt_config.fragment_interval,
+                "seed": self.gpt_config.seed,
+                "keep_random": self.gpt_config.keep_random,
+                "parallel_infer": self.gpt_config.parallel_infer,
+                "repetition_penalty": self.gpt_config.repetition_penalty,
+                "sample_steps": self.gpt_config.sample_steps,
+                "super_sampling": self.gpt_config.super_sampling,
+                "api_name": "/inference"
+            }
             
-            # 新 /inference API 特定参数
-            seed_to_use = float(getattr(self.gpt_config, 'seed', -1.0)) # 确保是float
-            keep_random_to_use = getattr(self.gpt_config, 'keep_random', True)
-            sample_steps_to_use = str(getattr(self.gpt_config, 'sample_steps', "32")) # 确保是str
+            print("   [GPT-SoVITS Params] Preparing to call predict with:")
+            # for k, v in params_to_api.items():
+            #     if k == "ref_audio_path":
+            #         print(f"     {k}: {ref_audio_path_to_use} (gradio.file object)")
+            #     else:
+            #         print(f"     {k}: {v}")
+            # 打印关键参数
+            print(f"     Text: '{params_to_api['text']}' ({params_to_api['text_lang']})")
+            print(f"     Ref Audio: {ref_audio_path_to_use}")
+            print(f"     Prompt Text: '{params_to_api['prompt_text']}' ({params_to_api['prompt_lang']})")
+            print(f"     Seed: {params_to_api['seed']}, Keep Random: {params_to_api['keep_random']}")
+            print(f"     Sample Steps: {params_to_api['sample_steps']}, Temperature: {params_to_api['temperature']}")
 
-            # 其他 /inference API 参数 (当前从 config 获取或使用硬编码的 API 默认值)
-            # 用户可能希望将这些也加入 GPTSoVITSConfig
-            batch_size_to_use = getattr(self.gpt_config, 'batch_size', 20.0)
-            split_bucket_to_use = getattr(self.gpt_config, 'split_bucket', True)
-            parallel_infer_to_use = getattr(self.gpt_config, 'parallel_infer', True)
-            repetition_penalty_to_use = getattr(self.gpt_config, 'repetition_penalty', 1.35)
-            super_sampling_to_use = getattr(self.gpt_config, 'super_sampling', getattr(self.gpt_config, 'if_sr', False))
 
+            result_tuple = self.gpt_sovits_client.predict(**params_to_api)
 
-            print(f"   [GPT-SoVITS Params] Seed: {seed_to_use}, KeepRandom: {keep_random_to_use}, Temp: {temperature_to_use}")
-            print(f"   [GPT-SoVITS Params] TopK: {top_k_to_use}, TopP: {top_p_to_use}, SampleSteps: {sample_steps_to_use}")
-
-            # 调用GPT-SoVITS /inference API
-            result_tuple = self.gpt_sovits_client.predict(
-                text=text,
-                text_lang=text_language_literal, # 使用转换后的字面量
-                ref_audio_path=file(ref_audio_path_to_use), # 参数名更改
-                aux_ref_audio_paths=[], # 必需参数，默认为空列表
-                prompt_text=prompt_text_to_use,
-                prompt_lang=prompt_language_literal, # 使用转换后的字面量
-                top_k=top_k_to_use,
-                top_p=top_p_to_use,
-                temperature=temperature_to_use,
-                text_split_method=text_split_method_to_use, # 参数名更改
-                speed_factor=speed_factor_to_use, # 参数名更改
-                ref_text_free=ref_text_free_to_use, # 新参数 (或旧参数映射)
-                split_bucket=split_bucket_to_use, # 新参数
-                fragment_interval=fragment_interval_to_use, # 新参数 (或旧参数映射)
-                seed=seed_to_use, # 新参数
-                keep_random=keep_random_to_use, # 新参数
-                parallel_infer=parallel_infer_to_use, # 新参数
-                repetition_penalty=repetition_penalty_to_use, # 新参数
-                sample_steps=sample_steps_to_use, # 参数类型可能变化，确保是str
-                super_sampling=super_sampling_to_use, # 新参数 (或旧参数映射)
-                batch_size=batch_size_to_use, # 新参数
-                api_name="/inference" # 明确指定新的API端点
-            )
-            
-            # 处理 /inference API 的返回结果 (filepath, seed_float)
             if isinstance(result_tuple, tuple) and len(result_tuple) == 2:
                 output_audio_path, returned_seed = result_tuple
                 print(f"   [GPT-SoVITS API] Returned audio path: {output_audio_path}, Returned seed: {returned_seed}")
                 if output_audio_path and os.path.exists(output_audio_path):
-                    with open(output_audio_path, 'rb') as f:
-                        audio_data = f.read()
-                    print(f"🔊 GPT-SoVITS合成完成: '{text}' 音频大小: {len(audio_data)} bytes, 使用Seed: {returned_seed}")
-                    # os.remove(output_audio_path) # 可选：删除服务端的临时文件
-                    return audio_data
+                    try:
+                        save_dir = os.path.join(os.path.dirname(__file__), "server_outputs", "sovits_raw_outputs")
+                        os.makedirs(save_dir, exist_ok=True)
+                        import time
+                        timestamp = time.strftime("%Y%m%d-%H%M%S")
+                        safe_text_suffix = "".join(filter(str.isalnum, text[:20]))
+                        filename = f"{timestamp}_{str(returned_seed).replace('.', '')}_{safe_text_suffix}.wav"
+                        raw_output_filepath = os.path.join(save_dir, filename)
+                        
+                        import shutil
+                        shutil.copy2(output_audio_path, raw_output_filepath)
+                        print(f"   [GPT-SoVITS API] Raw output saved to: {raw_output_filepath}")
+                        
+                        # 读取保存的或原始的API输出音频文件内容以供发送
+                        with open(raw_output_filepath, 'rb') as f_audio:
+                            audio_data_for_client = f_audio.read()
+                        return audio_data_for_client, text # 返回读取到的音频数据和原始文本
+                    except Exception as e_save:
+                        print(f"❌ 保存或读取SoVITS原始输出音频失败: {e_save}")
+                        return None, None
                 else:
-                    print(f"❌ GPT-SoVITS /inference API返回无效音频路径: {output_audio_path}")
-                    return None
+                    print("❌ SoVITS API未返回有效音频路径或文件不存在。")
+                    return None, None
             else:
-                print(f"❌ GPT-SoVITS /inference API返回结果格式不符合预期 (应为元组): {result_tuple}")
-                return None
-                
+                print(f"❌ SoVITS API返回结果格式不符合预期: {result_tuple}")
+                return None, None
         except Exception as e:
-            print(f"❌ GPT-SoVITS合成失败 (调用/inference): {e}")
+            print(f"❌ 调用GPT-SoVITS API失败: {e}")
             import traceback
-            traceback.print_exc() # 打印更详细的错误堆栈
-            return None
+            traceback.print_exc()
+            return None, None # 返回 None, None 表示失败
 
-    def stream_audio_to_client(self, audio_data: bytes, client_socket):
-        """将音频数据发送到客户端"""
+    def stream_audio_to_client(self, audio_data: bytes, client_socket, original_text="unknown"):
+        """将音频数据(前缀长度头)发送到客户端，并在发送前保存一份以供调试"""
         try:
             if client_socket and hasattr(client_socket, 'sendall'):
-                # 跳过WAV文件头，直接发送音频数据
-                if len(audio_data) > 44:
-                    audio_bytes = audio_data[44:]  # 跳过WAV头
-                else:
-                    audio_bytes = audio_data
+                audio_bytes_to_send = audio_data
+
+                # 调试：在发送前保存一份完整的WAV文件
+                try:
+                    save_dir = os.path.join(os.path.dirname(__file__), "server_outputs", "funasr_sent_audio")
+                    os.makedirs(save_dir, exist_ok=True)
+                    import time
+                    timestamp = time.strftime("%Y%m%d-%H%M%S")
+                    safe_text_suffix = "".join(filter(str.isalnum, original_text[:20])) if original_text else "audio"
+                    debug_filename = f"{timestamp}_{safe_text_suffix}_sent_to_client.wav"
+                    debug_filepath = os.path.join(save_dir, debug_filename)
+                    with open(debug_filepath, 'wb') as f_debug:
+                        f_debug.write(audio_bytes_to_send)
+                    print(f"🔍 [调试] 即将发送的音频已保存到: {debug_filepath}, 大小: {len(audio_bytes_to_send)} bytes")
+                except Exception as e_save:
+                    print(f"⚠️ [调试] 保存发送前音频失败: {e_save}")
+
+                # 1. 准备长度头 (8字节，网络字节序，无符号长整型)
+                data_len = len(audio_bytes_to_send)
+                header = struct.pack("!Q", data_len) # Q is for unsigned long long (8 bytes)
+
+                # 2. 发送长度头
+                client_socket.sendall(header)
+                print(f"✉️  已发送数据长度头部: {data_len} bytes (头部本身 {len(header)} bytes)")
+
+                # 3. 发送实际音频数据
+                client_socket.sendall(audio_bytes_to_send)
+                print(f"✅ 音频数据已发送到客户端 (实际大小: {data_len} bytes)")
                 
-                client_socket.sendall(audio_bytes)
-                print(f"✅ GPT-SoVITS音频已发送到客户端，大小: {len(audio_bytes)} bytes")
+                # 移除 client_socket.shutdown(socket.SHUT_WR)
+                # print("ℹ️  保持连接开放，以便发送更多音频。") # 可选的日志
+
             else:
-                print("⚠️  客户端连接已断开，无法发送音频")
+                print("⚠️  客户端连接已断开或无效，无法发送音频")
         except (ConnectionResetError, BrokenPipeError, OSError) as e:
-            print(f"❌ 发送音频失败: {e}")
+            # BrokenPipeError (errno 32) 可能会在客户端已关闭连接时发生
+            # ConnectionResetError (errno 104) 也表示连接问题
+            print(f"❌ 发送音频数据失败 (连接可能已由客户端关闭): {e}")
+            # 如果发送失败，可能需要从 read_list 中移除此socket，避免select错误
             if client_socket in self.read_list:
+                print(f"ℹ️  从监听列表中移除故障socket: {client_socket.getpeername() if hasattr(client_socket, 'getpeername') else client_socket}")
                 self.read_list.remove(client_socket)
+                try:
+                    client_socket.close() # 彻底关闭这个出错的socket
+                except Exception as e_close:
+                    print(f"⚠️ 关闭故障socket时发生错误: {e_close}")
+            # 不再向上抛出，允许服务器继续为其他客户端服务
 
     def start(self):
         """ Starts the server"""
