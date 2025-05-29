@@ -10,6 +10,7 @@ import sounddevice as sd
 import struct # <-- 添加导入
 import wave  # <-- 添加导入
 import io    # <-- 添加导入
+import librosa # <--- 添加librosa导入
 from utils.print_audio import print_sound, get_volume_norm, convert_and_normalize
 import os # 导入os模块
 
@@ -27,7 +28,7 @@ class AudioSocketClient:
     # How long you need to stop speaking to be considered an entire phrase
     PAUSE_THRESHOLD = 1.0  # 增加停顿检测时间，更容易检测到停顿
     # Volume for the microphone (降低阈值以提高敏感度)
-    RECORDER_ENERGY_THRESHOLD = 300
+    RECORDER_ENERGY_THRESHOLD = 800
     def __init__(self) -> None:
         # Prompt the user to select their devices
         self.input_device_index, self.output_device_index = sd.default.device
@@ -173,9 +174,6 @@ class AudioSocketClient:
 
                                 print(f"   [WAV Info] 文件采样率: {wav_framerate}, 声道数: {wav_channels}, 位深: {wav_sampwidth*8}-bit, 帧数: {num_frames}")
 
-                                if wav_framerate != self.PLAYBACK_RATE:
-                                    print(f"⚠️ 警告: WAV文件采样率 ({wav_framerate}Hz) 与播放器预设采样率 ({self.PLAYBACK_RATE}Hz) 不匹配! 播放速度可能不正确.")
-                                
                                 if wav_channels != self.CHANNELS:
                                     print(f"❌ 错误: WAV文件声道数 ({wav_channels}) 与播放器预设声道数 ({self.CHANNELS}) 不匹配! 无法正确播放.")
                                 elif wav_sampwidth != 2: # 2 bytes = 16-bit PCM
@@ -183,14 +181,33 @@ class AudioSocketClient:
                                 else:
                                     # 将16-bit PCM字节数据转换为 int16 NumPy 数组
                                     audio_pcm_int16 = np.frombuffer(pcm_data_bytes, dtype=np.int16)
-                                    # 转换为 float32 并归一化到 [-1.0, 1.0]
-                                    audio_to_play_float32 = audio_pcm_int16.astype(np.float32) / 32768.0
+                                    
+                                    # 首先将原始PCM转换为目标播放器期望的float32格式，此时仍是原始采样率
+                                    audio_float32_original_sr = audio_pcm_int16.astype(np.float32) / 32768.0
+                                    
+                                    # 默认情况下，要播放的音频就是这个原始采样率的音频
+                                    audio_to_play_float32 = audio_float32_original_sr 
+
+                                    if wav_framerate != self.PLAYBACK_RATE:
+                                        print(f"   ⚠️ [重采样] WAV文件采样率 ({wav_framerate}Hz) 与播放器预设采样率 ({self.PLAYBACK_RATE}Hz) 不同。正在尝试重采样...")
+                                        try:
+                                            # librosa.resample 的参数是 (y, orig_sr, target_sr)
+                                            # y 是一个numpy数组，浮点型
+                                            audio_to_play_float32 = librosa.resample(audio_float32_original_sr, 
+                                                                                     orig_sr=wav_framerate, 
+                                                                                     target_sr=self.PLAYBACK_RATE,
+                                                                                     res_type='kaiser_best') # 明确指定重采样算法
+                                            print(f"      ✅ [重采样] 音频已从 {wav_framerate}Hz 重采样到 {self.PLAYBACK_RATE}Hz.")
+                                        except Exception as e_resample:
+                                            print(f"      ❌ [重采样] 失败: {e_resample}.")
+                                            print(f"         将尝试以原始采样率数据播放（可能导致播放速度不正确）。")
+                                            # 如果重采样失败, audio_to_play_float32 保持为 audio_float32_original_sr
                                     
                                     # 如果WAV是立体声但我们只期望单声道，这里可以简单取一个声道，但这已由上面的channels检查阻止
                                     # if wav_channels == 2 and self.CHANNELS == 1:
                                     #    audio_to_play_float32 = audio_to_play_float32[::2] # 取左声道
 
-                                    print(f"   [播放] 准备播放 {len(audio_to_play_float32)} 个采样点 (float32)")
+                                    print(f"   [播放] 准备播放 {len(audio_to_play_float32)} 个采样点 (float32) 至设备 (配置为 {self.PLAYBACK_RATE}Hz)")
                                     audio_output.write(audio_to_play_float32)
                                     print(f"   [播放] 音频已发送到播放设备。")
 

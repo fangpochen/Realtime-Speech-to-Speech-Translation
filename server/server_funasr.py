@@ -47,6 +47,26 @@ class AudioSocketServerFunASR:
         self.gpt_config = GPTSoVITSConfig()
         self.gpt_config.api_url = gpt_sovits_api.rstrip('/')
         print(f"🚀 连接到GPT-SoVITS API: {self.gpt_config.api_url}")
+
+        # 应用来自 test_gradio_client.py 的参数
+        self.gpt_config.top_k = 20
+        self.gpt_config.top_p = 1.0
+        self.gpt_config.temperature = 1.0
+        self.gpt_config.text_split_method = "凑四句一切"
+        self.gpt_config.speed_factor = 1.0
+        self.gpt_config.seed = -1.0
+        self.gpt_config.keep_random = True
+        self.gpt_config.sample_steps = "64" # test_gradio_client.py 默认 "64"
+
+        self.gpt_config.batch_size = 50.0 # test_gradio_client.py 中为 50.0
+        self.gpt_config.ref_text_free = False # test_gradio_client.py 中为 False
+        self.gpt_config.split_bucket = True # test_gradio_client.py 中为 True
+        self.gpt_config.fragment_interval = 0.3 # test_gradio_client.py 中为 0.3
+        self.gpt_config.parallel_infer = True # test_gradio_client.py 中为 True
+        self.gpt_config.repetition_penalty = 1.35 # test_gradio_client.py 中为 1.35
+        self.gpt_config.super_sampling = False # test_gradio_client.py 中为 False
+        
+        print("ℹ️ GPT-SoVITS 配置已更新为来自 test_gradio_client.py 的参数。")
         
         # 初始化Gradio客户端
         try:

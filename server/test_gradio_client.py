@@ -14,14 +14,14 @@ def test_gradio_client(api_url="http://localhost:9872",
                        # ref_audio_path_param=os.path.abspath("server/tts_wav/1.wav"), 
                        # prompt_text_param="", 
                        # prompt_lang_param="中文", 
-                       top_k_param=5,
+                       top_k_param=20,
                        top_p_param=1.0,
                        temperature_param=1.0,
                        text_split_method_param="凑四句一切",
                        speed_factor_param=1.0,
                        seed_param=-1.0, 
                        keep_random_param=True, 
-                       sample_steps_param="32",
+                       sample_steps_param="64",
                        ):
     """测试gradio_client连接 /inference API"""
 
@@ -97,7 +97,7 @@ def test_gradio_client(api_url="http://localhost:9872",
             "sample_steps": sample_steps_param, # API默认"32", 可由命令行覆盖
 
             # 根据API文档添加其他参数及其默认值 (这些当前不由命令行控制)
-            "batch_size": 20.0,  # API Default: 20 (float)
+            "batch_size": 50.0,  # API Default: 20 (float)
             "ref_text_free": False, # API Default: False
             "split_bucket": True,  # API Default: True
             "fragment_interval": 0.3, # API Default: 0.3
@@ -173,14 +173,14 @@ if __name__ == "__main__":
     # ref_audio_cli = os.path.abspath("server/tts_wav/1.wav") 
     # prompt_text_cli = "" 
     # prompt_lang_cli = "中文"
-    top_k_cli = 5
+    top_k_cli = 20
     top_p_cli = 1.0
     temperature_cli = 1.0
     text_split_method_cli = "凑四句一切"
     speed_factor_cli = 1.0
     seed_cli = -1.0 
     keep_random_cli = True 
-    sample_steps_cli = "32" 
+    sample_steps_cli = "64" 
 
     # 命令行参数解析 (简单版本，后续可增强)
     args = sys.argv[1:] # 跳过脚本名
