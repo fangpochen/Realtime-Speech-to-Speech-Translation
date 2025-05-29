@@ -14,6 +14,7 @@ from gradio_client import Client, file
 from models.speech_recognition_funasr import FunASRSpeechRecognitionModel
 from models.translator import Translator
 from gpt_sovits_config import GPTSoVITSConfig
+import time
 
 class AudioSocketServerFunASR:
     """ Class that handles real-time translation and voice synthesization using FunASR
@@ -56,9 +57,9 @@ class AudioSocketServerFunASR:
         self.gpt_config.speed_factor = 1.0
         self.gpt_config.seed = -1.0
         self.gpt_config.keep_random = True
-        self.gpt_config.sample_steps = "64" # test_gradio_client.py 默认 "64"
+        self.gpt_config.sample_steps = "8" # 更新以匹配 test_gradio_client.py
 
-        self.gpt_config.batch_size = 50.0 # test_gradio_client.py 中为 50.0
+        self.gpt_config.batch_size = 25.0 # 更新以匹配 test_gradio_client.py
         self.gpt_config.ref_text_free = False # test_gradio_client.py 中为 False
         self.gpt_config.split_bucket = True # test_gradio_client.py 中为 True
         self.gpt_config.fragment_interval = 0.3 # test_gradio_client.py 中为 0.3
@@ -108,23 +109,31 @@ class AudioSocketServerFunASR:
         
     def handle_transcription(self, packet: str, client_socket):
         """ Callback function to put finalized transcriptions into TTS"""
-        print(f"🎤 识别结果: '{packet}'")
+        asr_end_time = time.time()
+        print(f"🎤 [{asr_end_time:.3f}] 识别结果: '{packet}'")
         
         if not packet or not packet.strip():
             print("⚠️  识别结果为空，跳过翻译")
             return
         
         # 翻译为英文
-        print(f"🔄 开始翻译...")
+        translation_start_time = time.time()
+        print(f"🔄 [{translation_start_time:.3f}] 开始翻译...")
         translated_text = self.translator.translate_to_english(packet)
-        print(f"🌍 翻译结果: '{translated_text}'")
+        translation_end_time = time.time()
+        print(f"🌍 [{translation_end_time:.3f}] 翻译结果: '{translated_text}' (耗时: {translation_end_time - translation_start_time:.3f}s)")
         
         if translated_text and translated_text.strip():
-            print(f"🔊 开始GPT-SoVITS语音合成...")
+            tts_start_time = time.time()
+            print(f"🔊 [{tts_start_time:.3f}] 开始GPT-SoVITS语音合成...")
             # 使用GPT-SoVITS合成英文语音
             audio_data, original_text_for_filename = self.gpt_sovits_synthesize(translated_text, "en")
+            tts_end_time = time.time()
             if audio_data:
+                print(f"合成完成，准备发送 (TTS总耗时: {tts_end_time - tts_start_time:.3f}s)")
                 self.stream_audio_to_client(audio_data, client_socket, original_text_for_filename)
+            else:
+                print(f"⚠️ [{tts_end_time:.3f}] 语音合成失败或未返回数据 (TTS尝试耗时: {tts_end_time - tts_start_time:.3f}s)")
         else:
             print("⚠️  翻译结果为空，跳过语音合成")
 
@@ -134,7 +143,8 @@ class AudioSocketServerFunASR:
             print("❌ GPT-SoVITS客户端未初始化，无法进行语音合成。")
             return None, None
         try:
-            print(f"🔊 开始GPT-SoVITS合成 (API: /inference): '{text}'")
+            synthesis_api_call_start_time = time.time()
+            print(f"🔊 [{synthesis_api_call_start_time:.3f}] 开始GPT-SoVITS合成 (API: /inference): '{text}'")
             
             prompt_language_literal = self.gpt_config.get_language("zh")
             text_language_literal = self.gpt_config.get_language(text_language)
@@ -188,7 +198,10 @@ class AudioSocketServerFunASR:
             print(f"     Sample Steps: {params_to_api['sample_steps']}, Temperature: {params_to_api['temperature']}")
 
 
+            predict_call_start_time = time.time()
             result_tuple = self.gpt_sovits_client.predict(**params_to_api)
+            predict_call_end_time = time.time()
+            print(f"   [GPT-SoVITS API Call] predict耗时: {predict_call_end_time - predict_call_start_time:.3f}s")
 
             if isinstance(result_tuple, tuple) and len(result_tuple) == 2:
                 output_audio_path, returned_seed = result_tuple
@@ -197,7 +210,6 @@ class AudioSocketServerFunASR:
                     try:
                         save_dir = os.path.join(os.path.dirname(__file__), "server_outputs", "sovits_raw_outputs")
                         os.makedirs(save_dir, exist_ok=True)
-                        import time
                         timestamp = time.strftime("%Y%m%d-%H%M%S")
                         safe_text_suffix = "".join(filter(str.isalnum, text[:20]))
                         filename = f"{timestamp}_{str(returned_seed).replace('.', '')}_{safe_text_suffix}.wav"
@@ -210,6 +222,8 @@ class AudioSocketServerFunASR:
                         # 读取保存的或原始的API输出音频文件内容以供发送
                         with open(raw_output_filepath, 'rb') as f_audio:
                             audio_data_for_client = f_audio.read()
+                        synthesis_api_call_end_time = time.time()
+                        print(f"   [GPT-SoVITS API] 整个合成函数耗时: {synthesis_api_call_end_time - synthesis_api_call_start_time:.3f}s")
                         return audio_data_for_client, text # 返回读取到的音频数据和原始文本
                     except Exception as e_save:
                         print(f"❌ 保存或读取SoVITS原始输出音频失败: {e_save}")
@@ -224,19 +238,21 @@ class AudioSocketServerFunASR:
             print(f"❌ 调用GPT-SoVITS API失败: {e}")
             import traceback
             traceback.print_exc()
+            synthesis_api_call_failed_time = time.time()
+            print(f"   [GPT-SoVITS API] 合成函数失败耗时: {synthesis_api_call_failed_time - synthesis_api_call_start_time:.3f}s")
             return None, None # 返回 None, None 表示失败
 
     def stream_audio_to_client(self, audio_data: bytes, client_socket, original_text="unknown"):
         """将音频数据(前缀长度头)发送到客户端，并在发送前保存一份以供调试"""
         try:
             if client_socket and hasattr(client_socket, 'sendall'):
+                send_start_time = time.time()
                 audio_bytes_to_send = audio_data
 
                 # 调试：在发送前保存一份完整的WAV文件
                 try:
                     save_dir = os.path.join(os.path.dirname(__file__), "server_outputs", "funasr_sent_audio")
                     os.makedirs(save_dir, exist_ok=True)
-                    import time
                     timestamp = time.strftime("%Y%m%d-%H%M%S")
                     safe_text_suffix = "".join(filter(str.isalnum, original_text[:20])) if original_text else "audio"
                     debug_filename = f"{timestamp}_{safe_text_suffix}_sent_to_client.wav"
@@ -252,12 +268,17 @@ class AudioSocketServerFunASR:
                 header = struct.pack("!Q", data_len) # Q is for unsigned long long (8 bytes)
 
                 # 2. 发送长度头
+                send_header_start_time = time.time()
                 client_socket.sendall(header)
-                print(f"✉️  已发送数据长度头部: {data_len} bytes (头部本身 {len(header)} bytes)")
+                send_header_end_time = time.time()
+                print(f"✉️  [{send_header_end_time:.3f}] 已发送数据长度头部: {data_len} bytes (头部本身 {len(header)} bytes, 发送耗时: {send_header_end_time - send_header_start_time:.3f}s)")
 
                 # 3. 发送实际音频数据
+                send_data_start_time = time.time()
                 client_socket.sendall(audio_bytes_to_send)
-                print(f"✅ 音频数据已发送到客户端 (实际大小: {data_len} bytes)")
+                send_data_end_time = time.time()
+                print(f"✅ [{send_data_end_time:.3f}] 音频数据已发送到客户端 (实际大小: {data_len} bytes, 发送耗时: {send_data_end_time - send_data_start_time:.3f}s)")
+                print(f"   [Total Send Time] 总发送耗时: {send_data_end_time - send_start_time:.3f}s")
                 
                 # 移除 client_socket.shutdown(socket.SHUT_WR)
                 # print("ℹ️  保持连接开放，以便发送更多音频。") # 可选的日志
@@ -300,14 +321,15 @@ class AudioSocketServerFunASR:
                         try:
                             data = s.recv(4096)
                             if data:
-                                print(f"📥 收到音频数据: {len(data)} bytes")
                                 self.data_queue.put((s, data))
                             else:
+                                print(f"ℹ️  客户端 {address} 断开连接 (recv返回空数据)") # 增加地址信息
                                 self.read_list.remove(s)
-                                print("Disconnection from", address)
+                                # print("Disconnection from", address) # 此行重复
                         except ConnectionResetError:
+                            print(f"❌ 客户端 {address} 连接被重置") # 增加地址信息
                             self.read_list.remove(s)
-                            print("Client crashed from", address)
+                            # print("Client crashed from", address) # 此行重复
         except KeyboardInterrupt:
             pass
         print("Performing server cleanup")

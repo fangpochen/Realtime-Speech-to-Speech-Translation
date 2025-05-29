@@ -5,6 +5,7 @@ import os
 import sys
 import traceback
 import random
+import time
 from gradio_client import Client, file
 
 def test_gradio_client(api_url="http://localhost:9872",
@@ -21,7 +22,7 @@ def test_gradio_client(api_url="http://localhost:9872",
                        speed_factor_param=1.0,
                        seed_param=-1.0, 
                        keep_random_param=True, 
-                       sample_steps_param="64",
+                       sample_steps_param="8",
                        ):
     """测试gradio_client连接 /inference API"""
 
@@ -97,7 +98,7 @@ def test_gradio_client(api_url="http://localhost:9872",
             "sample_steps": sample_steps_param, # API默认"32", 可由命令行覆盖
 
             # 根据API文档添加其他参数及其默认值 (这些当前不由命令行控制)
-            "batch_size": 50.0,  # API Default: 20 (float)
+            "batch_size": 25.0,  # API Default: 20 (float)
             "ref_text_free": False, # API Default: False
             "split_bucket": True,  # API Default: True
             "fragment_interval": 0.3, # API Default: 0.3
@@ -117,7 +118,11 @@ def test_gradio_client(api_url="http://localhost:9872",
         print("\n")
 
         print(f"🔊 开始TTS合成测试 (API: /inference)... ")
+        start_time = time.time()
         result_tuple = client.predict(**predict_params)
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print(f"⏱️ TTS合成耗时: {elapsed_time:.4f} 秒")
         
         print(f"✅ TTS合成成功!")
         if isinstance(result_tuple, tuple) and len(result_tuple) == 2:
@@ -180,7 +185,7 @@ if __name__ == "__main__":
     speed_factor_cli = 1.0
     seed_cli = -1.0 
     keep_random_cli = True 
-    sample_steps_cli = "64" 
+    sample_steps_cli = "8" 
 
     # 命令行参数解析 (简单版本，后续可增强)
     args = sys.argv[1:] # 跳过脚本名

@@ -1,4 +1,5 @@
-DEBUG:root:send audio data 1748516528.466760
+DEBUG:root:send audio data 1748529250.904273
+DEBUG:root:send audio data 1748529255.704746
 DEBUG:numba.core.byteflow:bytecode dump:
 >          0	NOP(arg=None, lineno=1137)
            2	RESUME(arg=0, lineno=1137)
@@ -623,14 +624,14 @@ DEBUG:numba.core.interpreter:label 0:
     num_table = arg(4, name=num_table)       ['num_table']
     scale = arg(5, name=scale)               ['scale']
     y = arg(6, name=y)                       ['y']
-    $4load_global.0 = global(_resample_loop_s: CPUDispatcher(<function _resample_loop at 0x0000023E664FE340>)) ['$4load_global.0']
+    $4load_global.0 = global(_resample_loop_s: CPUDispatcher(<function _resample_loop at 0x000001C62C528D60>)) ['$4load_global.0']
     $34call.9 = call $4load_global.0(x, t_out, interp_win, interp_delta, num_table, scale, y, func=$4load_global.0, args=[Var(x, interpn.py:81), Var(t_out, interpn.py:81), Var(interp_win, interpn.py:81), Var(interp_delta, interpn.py:81), Var(num_table, interpn.py:81), Var(scale, interpn.py:81), Var(y, interpn.py:81)], kws=(), vararg=None, varkwarg=None, target=None) ['$34call.9', '$4load_global.0', 'interp_delta', 'interp_win', 'num_table', 'scale', 't_out', 'x', 'y']
     $const46.10.0 = const(NoneType, None)    ['$const46.10.0']
     $48return_value.11 = cast(value=$const46.10.0) ['$48return_value.11', '$const46.10.0']
     return $48return_value.11                ['$48return_value.11']
 
 DEBUG:numba.core.ssa:==== SSA block analysis pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x0000023E675DC810>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x000001C62D5A5910>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -638,33 +639,33 @@ DEBUG:numba.core.ssa:on stmt: interp_delta = arg(3, name=interp_delta)
 DEBUG:numba.core.ssa:on stmt: num_table = arg(4, name=num_table)
 DEBUG:numba.core.ssa:on stmt: scale = arg(5, name=scale)
 DEBUG:numba.core.ssa:on stmt: y = arg(6, name=y)
-DEBUG:numba.core.ssa:on stmt: $4load_global.0 = global(_resample_loop_s: CPUDispatcher(<function _resample_loop at 0x0000023E664FE340>))
+DEBUG:numba.core.ssa:on stmt: $4load_global.0 = global(_resample_loop_s: CPUDispatcher(<function _resample_loop at 0x000001C62C528D60>))
 DEBUG:numba.core.ssa:on stmt: $34call.9 = call $4load_global.0(x, t_out, interp_win, interp_delta, num_table, scale, y, func=$4load_global.0, args=[Var(x, interpn.py:81), Var(t_out, interpn.py:81), Var(interp_win, interpn.py:81), Var(interp_delta, interpn.py:81), Var(num_table, interpn.py:81), Var(scale, interpn.py:81), Var(y, interpn.py:81)], kws=(), vararg=None, varkwarg=None, target=None)
 DEBUG:numba.core.ssa:on stmt: $const46.10.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $48return_value.11 = cast(value=$const46.10.0)
 DEBUG:numba.core.ssa:on stmt: return $48return_value.11
 DEBUG:numba.core.ssa:defs defaultdict(<class 'list'>,
-            {'$34call.9': [(<numba.core.ir.Assign object at 0x0000023E675C7D90>,
+            {'$34call.9': [(<numba.core.ir.Assign object at 0x000001C62D5C4150>,
                             0)],
-             '$48return_value.11': [(<numba.core.ir.Assign object at 0x0000023E675C6250>,
+             '$48return_value.11': [(<numba.core.ir.Assign object at 0x000001C62D5C46D0>,
                                      0)],
-             '$4load_global.0': [(<numba.core.ir.Assign object at 0x0000023E675C74D0>,
+             '$4load_global.0': [(<numba.core.ir.Assign object at 0x000001C62D5C4ED0>,
                                   0)],
-             '$const46.10.0': [(<numba.core.ir.Assign object at 0x0000023E675C7BD0>,
+             '$const46.10.0': [(<numba.core.ir.Assign object at 0x000001C62D5C4450>,
                                 0)],
-             'interp_delta': [(<numba.core.ir.Assign object at 0x0000023E675C5990>,
+             'interp_delta': [(<numba.core.ir.Assign object at 0x000001C62D5C5890>,
                                0)],
-             'interp_win': [(<numba.core.ir.Assign object at 0x0000023E675C6DD0>,
+             'interp_win': [(<numba.core.ir.Assign object at 0x000001C62D5C5D90>,
                              0)],
-             'num_table': [(<numba.core.ir.Assign object at 0x0000023E675C5910>,
+             'num_table': [(<numba.core.ir.Assign object at 0x000001C62D5C5810>,
                             0)],
-             'scale': [(<numba.core.ir.Assign object at 0x0000023E675C7A10>,
+             'scale': [(<numba.core.ir.Assign object at 0x000001C62D5C4FD0>,
                         0)],
-             't_out': [(<numba.core.ir.Assign object at 0x0000023E675C5650>,
+             't_out': [(<numba.core.ir.Assign object at 0x000001C62D5C5B50>,
                         0)],
-             'x': [(<numba.core.ir.Assign object at 0x0000023E675C60D0>, 0)],
-             'y': [(<numba.core.ir.Assign object at 0x0000023E675C6C50>, 0)]})
-DEBUG:numba.core.ssa:SSA violators <numba.core.utils.OrderedSet object at 0x0000023E675E6590>
+             'x': [(<numba.core.ir.Assign object at 0x000001C62D5C5A10>, 0)],
+             'y': [(<numba.core.ir.Assign object at 0x000001C62D5C5410>, 0)]})
+DEBUG:numba.core.ssa:SSA violators <numba.core.utils.OrderedSet object at 0x000001C62D5C7350>
 DEBUG:numba.core.byteflow:bytecode dump:
 >          0	NOP(arg=None, lineno=7)
            2	RESUME(arg=0, lineno=7)
@@ -1688,7 +1689,7 @@ label 782:
     return $784return_value.1                ['$784return_value.1']
 
 DEBUG:numba.core.ssa:==== SSA block analysis pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x000001C62C4D9E90>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -1721,17 +1722,17 @@ DEBUG:numba.core.ssa:on stmt: $174get_iter.29 = getiter(value=$164call.28)
 DEBUG:numba.core.ssa:on stmt: $phi178.0 = $174get_iter.29
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block analysis pass on 176
-DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x000001C62C4D9E90>
 DEBUG:numba.core.ssa:on stmt: jump 178
 DEBUG:numba.core.ssa:==== SSA block analysis pass on 178
-DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x000001C62C4D9E90>
 DEBUG:numba.core.ssa:on stmt: $178for_iter.1 = iternext(value=$phi178.0)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.2 = pair_first(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.3 = pair_second(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $phi180.1 = $178for_iter.2
 DEBUG:numba.core.ssa:on stmt: branch $178for_iter.3, 180, 782
 DEBUG:numba.core.ssa:==== SSA block analysis pass on 180
-DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x000001C62C4D9E90>
 DEBUG:numba.core.ssa:on stmt: t = $phi180.1
 DEBUG:numba.core.ssa:on stmt: time_register = getitem(value=t_out, index=t, fn=<built-in function getitem>)
 DEBUG:numba.core.ssa:on stmt: $198load_global.5 = global(int: <class 'int'>)
@@ -1754,14 +1755,14 @@ DEBUG:numba.core.ssa:on stmt: $372get_iter.39 = getiter(value=$362call.38)
 DEBUG:numba.core.ssa:on stmt: $phi374.1 = $372get_iter.39
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block analysis pass on 374
-DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x000001C62C4D9E90>
 DEBUG:numba.core.ssa:on stmt: $374for_iter.2 = iternext(value=$phi374.1)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.3 = pair_first(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.4 = pair_second(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi376.2 = $374for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $374for_iter.4, 376, 500
 DEBUG:numba.core.ssa:==== SSA block analysis pass on 376
-DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x000001C62C4D9E90>
 DEBUG:numba.core.ssa:on stmt: i = $phi376.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul386.7 = i * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add390.8 = offset + $binop_mul386.7
@@ -1779,7 +1780,7 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd486.30 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd486.30
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block analysis pass on 500
-DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x000001C62C4D9E90>
 DEBUG:numba.core.ssa:on stmt: $binop_sub504.3 = scale - frac
 DEBUG:numba.core.ssa:on stmt: frac = $binop_sub504.3
 DEBUG:numba.core.ssa:on stmt: index_frac = frac * num_table
@@ -1799,14 +1800,14 @@ DEBUG:numba.core.ssa:on stmt: $644get_iter.31 = getiter(value=$634call.30)
 DEBUG:numba.core.ssa:on stmt: $phi646.1 = $644get_iter.31
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block analysis pass on 646
-DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x000001C62C4D9E90>
 DEBUG:numba.core.ssa:on stmt: $646for_iter.2 = iternext(value=$phi646.1)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.3 = pair_first(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.4 = pair_second(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi648.2 = $646for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $646for_iter.4, 648, 778
 DEBUG:numba.core.ssa:==== SSA block analysis pass on 648
-DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x000001C62C4D9E90>
 DEBUG:numba.core.ssa:on stmt: k = $phi648.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul658.7 = k * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add662.8 = offset + $binop_mul658.7
@@ -1826,229 +1827,229 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd764.32 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd764.32
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block analysis pass on 778
-DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x000001C62C4D9E90>
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block analysis pass on 782
-DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._GatherDefsHandler object at 0x000001C62C4D9E90>
 DEBUG:numba.core.ssa:on stmt: $const782.0.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $784return_value.1 = cast(value=$const782.0.0)
 DEBUG:numba.core.ssa:on stmt: return $784return_value.1
 DEBUG:numba.core.ssa:defs defaultdict(<class 'list'>,
-            {'$122load_attr.22': [(<numba.core.ir.Assign object at 0x0000023E67593CD0>,
+            {'$122load_attr.22': [(<numba.core.ir.Assign object at 0x000001C62C53E510>,
                                    0)],
-             '$146load_global.25': [(<numba.core.ir.Assign object at 0x0000023E67591E10>,
+             '$146load_global.25': [(<numba.core.ir.Assign object at 0x000001C62C53CBD0>,
                                      0)],
-             '$164call.28': [(<numba.core.ir.Assign object at 0x0000023E67591AD0>,
+             '$164call.28': [(<numba.core.ir.Assign object at 0x000001C62C53D310>,
                               0)],
-             '$174get_iter.29': [(<numba.core.ir.Assign object at 0x0000023E67591510>,
+             '$174get_iter.29': [(<numba.core.ir.Assign object at 0x000001C62C53D0D0>,
                                   0)],
-             '$178for_iter.1': [(<numba.core.ir.Assign object at 0x0000023E67591790>,
+             '$178for_iter.1': [(<numba.core.ir.Assign object at 0x000001C62C53DD10>,
                                  178)],
-             '$178for_iter.2': [(<numba.core.ir.Assign object at 0x0000023E67591390>,
+             '$178for_iter.2': [(<numba.core.ir.Assign object at 0x000001C62C53D050>,
                                  178)],
-             '$178for_iter.3': [(<numba.core.ir.Assign object at 0x0000023E67590990>,
+             '$178for_iter.3': [(<numba.core.ir.Assign object at 0x000001C62C53E210>,
                                  178)],
-             '$198load_global.5': [(<numba.core.ir.Assign object at 0x0000023E67592D10>,
+             '$198load_global.5': [(<numba.core.ir.Assign object at 0x000001C62C53F650>,
                                     180)],
-             '$254load_global.17': [(<numba.core.ir.Assign object at 0x0000023E6758EC10>,
+             '$254load_global.17': [(<numba.core.ir.Assign object at 0x000001C62C54F4D0>,
                                      180)],
-             '$294load_global.24': [(<numba.core.ir.Assign object at 0x0000023E6758D510>,
+             '$294load_global.24': [(<numba.core.ir.Assign object at 0x000001C62C54E510>,
                                      180)],
-             '$344load_global.35': [(<numba.core.ir.Assign object at 0x0000023E6758CB90>,
+             '$344load_global.35': [(<numba.core.ir.Assign object at 0x000001C62C54C350>,
                                      180)],
-             '$362call.38': [(<numba.core.ir.Assign object at 0x0000023E6758FA50>,
+             '$362call.38': [(<numba.core.ir.Assign object at 0x000001C62C54CED0>,
                               180)],
-             '$372get_iter.39': [(<numba.core.ir.Assign object at 0x0000023E6758F4D0>,
+             '$372get_iter.39': [(<numba.core.ir.Assign object at 0x000001C62C54D410>,
                                   180)],
-             '$374for_iter.2': [(<numba.core.ir.Assign object at 0x0000023E67590110>,
+             '$374for_iter.2': [(<numba.core.ir.Assign object at 0x000001C62C54C210>,
                                  374)],
-             '$374for_iter.3': [(<numba.core.ir.Assign object at 0x0000023E6758D6D0>,
+             '$374for_iter.3': [(<numba.core.ir.Assign object at 0x000001C62C54EE90>,
                                  374)],
-             '$374for_iter.4': [(<numba.core.ir.Assign object at 0x0000023E6758ECD0>,
+             '$374for_iter.4': [(<numba.core.ir.Assign object at 0x000001C62C54F990>,
                                  374)],
-             '$394binary_subscr.9': [(<numba.core.ir.Assign object at 0x0000023E675A5150>,
+             '$394binary_subscr.9': [(<numba.core.ir.Assign object at 0x000001C62C553C10>,
                                       376)],
-             '$422binary_subscr.17': [(<numba.core.ir.Assign object at 0x0000023E675A4810>,
+             '$422binary_subscr.17': [(<numba.core.ir.Assign object at 0x000001C62C553210>,
                                        376)],
-             '$450binary_subscr.22': [(<numba.core.ir.Assign object at 0x0000023E675A5C10>,
+             '$450binary_subscr.22': [(<numba.core.ir.Assign object at 0x000001C62C552710>,
                                        376)],
-             '$472binary_subscr.28': [(<numba.core.ir.Assign object at 0x0000023E675A7790>,
+             '$472binary_subscr.28': [(<numba.core.ir.Assign object at 0x000001C62C551A10>,
                                        376)],
-             '$4load_global.0': [(<numba.core.ir.Assign object at 0x0000023E675E21D0>,
+             '$4load_global.0': [(<numba.core.ir.Assign object at 0x000001C62D5BF990>,
                                   0)],
-             '$520load_global.7': [(<numba.core.ir.Assign object at 0x0000023E675A6C10>,
+             '$520load_global.7': [(<numba.core.ir.Assign object at 0x000001C62D6402D0>,
                                     500)],
-             '$560load_global.14': [(<numba.core.ir.Assign object at 0x0000023E664975D0>,
+             '$560load_global.14': [(<numba.core.ir.Assign object at 0x000001C62D641390>,
                                      500)],
-             '$616load_global.27': [(<numba.core.ir.Assign object at 0x0000023E664A6B10>,
+             '$616load_global.27': [(<numba.core.ir.Assign object at 0x000001C62D642CD0>,
                                      500)],
-             '$634call.30': [(<numba.core.ir.Assign object at 0x0000023E66501B10>,
+             '$634call.30': [(<numba.core.ir.Assign object at 0x000001C62D643150>,
                               500)],
-             '$644get_iter.31': [(<numba.core.ir.Assign object at 0x0000023E66502AD0>,
+             '$644get_iter.31': [(<numba.core.ir.Assign object at 0x000001C62D643410>,
                                   500)],
-             '$646for_iter.2': [(<numba.core.ir.Assign object at 0x0000023E675BD350>,
+             '$646for_iter.2': [(<numba.core.ir.Assign object at 0x000001C62D640DD0>,
                                  646)],
-             '$646for_iter.3': [(<numba.core.ir.Assign object at 0x0000023E66495210>,
+             '$646for_iter.3': [(<numba.core.ir.Assign object at 0x000001C62D6411D0>,
                                  646)],
-             '$646for_iter.4': [(<numba.core.ir.Assign object at 0x0000023E664A6050>,
+             '$646for_iter.4': [(<numba.core.ir.Assign object at 0x000001C62D641FD0>,
                                  646)],
-             '$666binary_subscr.9': [(<numba.core.ir.Assign object at 0x0000023E665009D0>,
+             '$666binary_subscr.9': [(<numba.core.ir.Assign object at 0x000001C62D648490>,
                                       648)],
-             '$694binary_subscr.17': [(<numba.core.ir.Assign object at 0x0000023E66503090>,
+             '$694binary_subscr.17': [(<numba.core.ir.Assign object at 0x000001C62D649290>,
                                        648)],
-             '$70load_attr.14': [(<numba.core.ir.Assign object at 0x0000023E67574850>,
+             '$70load_attr.14': [(<numba.core.ir.Assign object at 0x000001C62C53F550>,
                                   0)],
-             '$722binary_subscr.22': [(<numba.core.ir.Assign object at 0x0000023E66501C10>,
+             '$722binary_subscr.22': [(<numba.core.ir.Assign object at 0x000001C62D649D50>,
                                        648)],
-             '$750binary_subscr.30': [(<numba.core.ir.Assign object at 0x0000023E665001D0>,
+             '$750binary_subscr.30': [(<numba.core.ir.Assign object at 0x000001C62D64ABD0>,
                                        648)],
-             '$784return_value.1': [(<numba.core.ir.Assign object at 0x0000023E665010D0>,
+             '$784return_value.1': [(<numba.core.ir.Assign object at 0x000001C62D649B50>,
                                      782)],
-             '$96load_attr.18': [(<numba.core.ir.Assign object at 0x0000023E67593310>,
+             '$96load_attr.18': [(<numba.core.ir.Assign object at 0x000001C62C53ECD0>,
                                   0)],
-             '$binop_add310.28': [(<numba.core.ir.Assign object at 0x0000023E6758D650>,
+             '$binop_add310.28': [(<numba.core.ir.Assign object at 0x000001C62C54E290>,
                                    180)],
-             '$binop_add390.8': [(<numba.core.ir.Assign object at 0x0000023E675A4F10>,
+             '$binop_add390.8': [(<numba.core.ir.Assign object at 0x000001C62C553D90>,
                                   376)],
-             '$binop_add418.16': [(<numba.core.ir.Assign object at 0x0000023E675A42D0>,
+             '$binop_add418.16': [(<numba.core.ir.Assign object at 0x000001C62C5531D0>,
                                    376)],
-             '$binop_add662.8': [(<numba.core.ir.Assign object at 0x0000023E665023D0>,
+             '$binop_add662.8': [(<numba.core.ir.Assign object at 0x000001C62D648250>,
                                   648)],
-             '$binop_add690.16': [(<numba.core.ir.Assign object at 0x0000023E66503490>,
+             '$binop_add690.16': [(<numba.core.ir.Assign object at 0x000001C62D649090>,
                                    648)],
-             '$binop_add740.27': [(<numba.core.ir.Assign object at 0x0000023E66501850>,
+             '$binop_add740.27': [(<numba.core.ir.Assign object at 0x000001C62D64A650>,
                                    648)],
-             '$binop_add746.29': [(<numba.core.ir.Assign object at 0x0000023E66500390>,
+             '$binop_add746.29': [(<numba.core.ir.Assign object at 0x000001C62D64A9D0>,
                                    648)],
-             '$binop_floordiv324.33': [(<numba.core.ir.Assign object at 0x0000023E6758C410>,
+             '$binop_floordiv324.33': [(<numba.core.ir.Assign object at 0x000001C62C54CE90>,
                                         180)],
-             '$binop_floordiv596.25': [(<numba.core.ir.Assign object at 0x0000023E664A5A90>,
+             '$binop_floordiv596.25': [(<numba.core.ir.Assign object at 0x000001C62D642650>,
                                         500)],
-             '$binop_iadd486.30': [(<numba.core.ir.Assign object at 0x0000023E675A7390>,
+             '$binop_iadd486.30': [(<numba.core.ir.Assign object at 0x000001C62C5516D0>,
                                     376)],
-             '$binop_iadd764.32': [(<numba.core.ir.Assign object at 0x0000023E66523B90>,
+             '$binop_iadd764.32': [(<numba.core.ir.Assign object at 0x000001C62D64B090>,
                                     648)],
-             '$binop_mul20.4': [(<numba.core.ir.Assign object at 0x0000023E675BC5D0>,
+             '$binop_mul20.4': [(<numba.core.ir.Assign object at 0x000001C62D5BDC90>,
                                  0)],
-             '$binop_mul386.7': [(<numba.core.ir.Assign object at 0x0000023E6758E910>,
+             '$binop_mul386.7': [(<numba.core.ir.Assign object at 0x000001C62C551B90>,
                                   376)],
-             '$binop_mul414.15': [(<numba.core.ir.Assign object at 0x0000023E675A4110>,
+             '$binop_mul414.15': [(<numba.core.ir.Assign object at 0x000001C62C553850>,
                                    376)],
-             '$binop_mul432.18': [(<numba.core.ir.Assign object at 0x0000023E675A5610>,
+             '$binop_mul432.18': [(<numba.core.ir.Assign object at 0x000001C62C552E50>,
                                    376)],
-             '$binop_mul482.29': [(<numba.core.ir.Assign object at 0x0000023E675A7610>,
+             '$binop_mul482.29': [(<numba.core.ir.Assign object at 0x000001C62C551710>,
                                    376)],
-             '$binop_mul658.7': [(<numba.core.ir.Assign object at 0x0000023E66502790>,
+             '$binop_mul658.7': [(<numba.core.ir.Assign object at 0x000001C62D643FD0>,
                                   648)],
-             '$binop_mul686.15': [(<numba.core.ir.Assign object at 0x0000023E665039D0>,
+             '$binop_mul686.15': [(<numba.core.ir.Assign object at 0x000001C62D648E90>,
                                    648)],
-             '$binop_mul704.18': [(<numba.core.ir.Assign object at 0x0000023E665026D0>,
+             '$binop_mul704.18': [(<numba.core.ir.Assign object at 0x000001C62D6494D0>,
                                    648)],
-             '$binop_mul760.31': [(<numba.core.ir.Assign object at 0x0000023E66502A90>,
+             '$binop_mul760.31': [(<numba.core.ir.Assign object at 0x000001C62D64AE50>,
                                    648)],
-             '$binop_sub234.12': [(<numba.core.ir.Assign object at 0x0000023E675923D0>,
+             '$binop_sub234.12': [(<numba.core.ir.Assign object at 0x000001C62C54FE90>,
                                    180)],
-             '$binop_sub318.31': [(<numba.core.ir.Assign object at 0x0000023E6758C750>,
+             '$binop_sub318.31': [(<numba.core.ir.Assign object at 0x000001C62C54D850>,
                                    180)],
-             '$binop_sub468.27': [(<numba.core.ir.Assign object at 0x0000023E675A7C10>,
+             '$binop_sub468.27': [(<numba.core.ir.Assign object at 0x000001C62C551E50>,
                                    376)],
-             '$binop_sub504.3': [(<numba.core.ir.Assign object at 0x0000023E675A54D0>,
+             '$binop_sub504.3': [(<numba.core.ir.Assign object at 0x000001C62C551590>,
                                   500)],
-             '$binop_sub576.18': [(<numba.core.ir.Assign object at 0x0000023E664BACD0>,
+             '$binop_sub576.18': [(<numba.core.ir.Assign object at 0x000001C62D6418D0>,
                                    500)],
-             '$binop_sub582.20': [(<numba.core.ir.Assign object at 0x0000023E664B9550>,
+             '$binop_sub582.20': [(<numba.core.ir.Assign object at 0x000001C62D641C90>,
                                    500)],
-             '$binop_sub590.23': [(<numba.core.ir.Assign object at 0x0000023E664A6310>,
+             '$binop_sub590.23': [(<numba.core.ir.Assign object at 0x000001C62D642210>,
                                    500)],
-             '$const106.19.2': [(<numba.core.ir.Assign object at 0x0000023E67593390>,
+             '$const106.19.2': [(<numba.core.ir.Assign object at 0x000001C62C53EA10>,
                                  0)],
-             '$const132.23.2': [(<numba.core.ir.Assign object at 0x0000023E67593290>,
+             '$const132.23.2': [(<numba.core.ir.Assign object at 0x000001C62C53E2D0>,
                                  0)],
-             '$const308.27.3': [(<numba.core.ir.Assign object at 0x0000023E6758D690>,
+             '$const308.27.3': [(<numba.core.ir.Assign object at 0x000001C62C54E0D0>,
                                  180)],
-             '$const580.19.3': [(<numba.core.ir.Assign object at 0x0000023E664BBC50>,
+             '$const580.19.3': [(<numba.core.ir.Assign object at 0x000001C62D641A90>,
                                  500)],
-             '$const744.28.3': [(<numba.core.ir.Assign object at 0x0000023E66500D90>,
+             '$const744.28.3': [(<numba.core.ir.Assign object at 0x000001C62D64A7D0>,
                                  648)],
-             '$const782.0.0': [(<numba.core.ir.Assign object at 0x0000023E665037D0>,
+             '$const782.0.0': [(<numba.core.ir.Assign object at 0x000001C62D648710>,
                                 782)],
-             '$const80.15.2': [(<numba.core.ir.Assign object at 0x0000023E67574150>,
+             '$const80.15.2': [(<numba.core.ir.Assign object at 0x000001C62C53F490>,
                                 0)],
-             '$phi178.0': [(<numba.core.ir.Assign object at 0x0000023E675BF9D0>,
+             '$phi178.0': [(<numba.core.ir.Assign object at 0x000001C62D5BC210>,
                             0)],
-             '$phi180.1': [(<numba.core.ir.Assign object at 0x0000023E675E4210>,
+             '$phi180.1': [(<numba.core.ir.Assign object at 0x000001C62C53CCD0>,
                             178)],
-             '$phi374.1': [(<numba.core.ir.Assign object at 0x0000023E67590B90>,
+             '$phi374.1': [(<numba.core.ir.Assign object at 0x000001C62C53C8D0>,
                             180)],
-             '$phi376.2': [(<numba.core.ir.Assign object at 0x0000023E6758FB90>,
+             '$phi376.2': [(<numba.core.ir.Assign object at 0x000001C62C54EDD0>,
                             374)],
-             '$phi646.1': [(<numba.core.ir.Assign object at 0x0000023E6758EC50>,
+             '$phi646.1': [(<numba.core.ir.Assign object at 0x000001C62C5522D0>,
                             500)],
-             '$phi648.2': [(<numba.core.ir.Assign object at 0x0000023E664A5550>,
+             '$phi648.2': [(<numba.core.ir.Assign object at 0x000001C62D642F50>,
                             646)],
-             'eta': [(<numba.core.ir.Assign object at 0x0000023E67576810>, 0),
-                     (<numba.core.ir.Assign object at 0x0000023E6758E090>, 180),
-                     (<numba.core.ir.Assign object at 0x0000023E664DD190>,
+             'eta': [(<numba.core.ir.Assign object at 0x000001C62C522510>, 0),
+                     (<numba.core.ir.Assign object at 0x000001C62C54E790>, 180),
+                     (<numba.core.ir.Assign object at 0x000001C62D641050>,
                       500)],
-             'frac': [(<numba.core.ir.Assign object at 0x0000023E67574CD0>, 0),
-                      (<numba.core.ir.Assign object at 0x0000023E6758DF10>,
+             'frac': [(<numba.core.ir.Assign object at 0x000001C62C521CD0>, 0),
+                      (<numba.core.ir.Assign object at 0x000001C62C54FC10>,
                        180),
-                      (<numba.core.ir.Assign object at 0x0000023E675A4750>,
+                      (<numba.core.ir.Assign object at 0x000001C62C553950>,
                        500)],
-             'i': [(<numba.core.ir.Assign object at 0x0000023E6758D1D0>, 376)],
-             'i_max': [(<numba.core.ir.Assign object at 0x0000023E6758C290>,
+             'i': [(<numba.core.ir.Assign object at 0x000001C62C54EC10>, 376)],
+             'i_max': [(<numba.core.ir.Assign object at 0x000001C62C54CAD0>,
                         180)],
-             'index_frac': [(<numba.core.ir.Assign object at 0x0000023E67576A50>,
+             'index_frac': [(<numba.core.ir.Assign object at 0x000001C62C523C10>,
                              0),
-                            (<numba.core.ir.Assign object at 0x0000023E6758EED0>,
+                            (<numba.core.ir.Assign object at 0x000001C62C54F250>,
                              180),
-                            (<numba.core.ir.Assign object at 0x0000023E675A66D0>,
+                            (<numba.core.ir.Assign object at 0x000001C62C551490>,
                              500)],
-             'index_step': [(<numba.core.ir.Assign object at 0x0000023E6757E750>,
+             'index_step': [(<numba.core.ir.Assign object at 0x000001C62C547C50>,
                              0)],
-             'interp_delta': [(<numba.core.ir.Assign object at 0x0000023E675DF410>,
+             'interp_delta': [(<numba.core.ir.Assign object at 0x000001C62D5D41D0>,
                                0)],
-             'interp_win': [(<numba.core.ir.Assign object at 0x0000023E675D4750>,
+             'interp_win': [(<numba.core.ir.Assign object at 0x000001C62D5C41D0>,
                              0)],
-             'k': [(<numba.core.ir.Assign object at 0x0000023E665002D0>, 648)],
-             'k_max': [(<numba.core.ir.Assign object at 0x0000023E664A6C50>,
+             'k': [(<numba.core.ir.Assign object at 0x000001C62D643690>, 648)],
+             'k_max': [(<numba.core.ir.Assign object at 0x000001C62D642910>,
                         500)],
-             'n': [(<numba.core.ir.Assign object at 0x0000023E67575D90>, 0),
-                   (<numba.core.ir.Assign object at 0x0000023E67591910>, 180)],
-             'n_orig': [(<numba.core.ir.Assign object at 0x0000023E675C5290>,
+             'n': [(<numba.core.ir.Assign object at 0x000001C62C522FD0>, 0),
+                   (<numba.core.ir.Assign object at 0x000001C62C53C9D0>, 180)],
+             'n_orig': [(<numba.core.ir.Assign object at 0x000001C62C537450>,
                          0)],
-             'n_out': [(<numba.core.ir.Assign object at 0x0000023E675E3A10>,
+             'n_out': [(<numba.core.ir.Assign object at 0x000001C62C4DA990>,
                         0)],
-             'num_table': [(<numba.core.ir.Assign object at 0x0000023E675C6790>,
+             'num_table': [(<numba.core.ir.Assign object at 0x000001C62D5D5010>,
                             0)],
-             'nwin': [(<numba.core.ir.Assign object at 0x0000023E675E7550>, 0)],
-             'offset': [(<numba.core.ir.Assign object at 0x0000023E67574AD0>,
+             'nwin': [(<numba.core.ir.Assign object at 0x000001C62C53E9D0>, 0)],
+             'offset': [(<numba.core.ir.Assign object at 0x000001C62C522DD0>,
                          0),
-                        (<numba.core.ir.Assign object at 0x0000023E6758E050>,
+                        (<numba.core.ir.Assign object at 0x000001C62C54EC90>,
                          180),
-                        (<numba.core.ir.Assign object at 0x0000023E675A6210>,
+                        (<numba.core.ir.Assign object at 0x000001C62D640990>,
                          500)],
-             'scale': [(<numba.core.ir.Assign object at 0x0000023E675C6AD0>,
+             'scale': [(<numba.core.ir.Assign object at 0x000001C62D5D4F10>,
                         0)],
-             't': [(<numba.core.ir.Assign object at 0x0000023E67590DD0>, 180)],
-             't_out': [(<numba.core.ir.Assign object at 0x0000023E675D4890>,
+             't': [(<numba.core.ir.Assign object at 0x000001C62C53DA50>, 180)],
+             't_out': [(<numba.core.ir.Assign object at 0x000001C62D5C5DD0>,
                         0)],
-             'time_register': [(<numba.core.ir.Assign object at 0x0000023E6757D450>,
+             'time_register': [(<numba.core.ir.Assign object at 0x000001C62C547A50>,
                                 0),
-                               (<numba.core.ir.Assign object at 0x0000023E675907D0>,
+                               (<numba.core.ir.Assign object at 0x000001C62C53C450>,
                                 180)],
-             'weight': [(<numba.core.ir.Assign object at 0x0000023E67576C50>,
+             'weight': [(<numba.core.ir.Assign object at 0x000001C62C53D210>,
                          0),
-                        (<numba.core.ir.Assign object at 0x0000023E675A5D90>,
+                        (<numba.core.ir.Assign object at 0x000001C62C553550>,
                          376),
-                        (<numba.core.ir.Assign object at 0x0000023E66502450>,
+                        (<numba.core.ir.Assign object at 0x000001C62D649710>,
                          648)],
-             'x': [(<numba.core.ir.Assign object at 0x0000023E675D7C90>, 0)],
-             'y': [(<numba.core.ir.Assign object at 0x0000023E675C6C90>, 0)]})
-DEBUG:numba.core.ssa:SSA violators <numba.core.utils.OrderedSet object at 0x0000023E675D7DD0>
+             'x': [(<numba.core.ir.Assign object at 0x000001C62D5C55D0>, 0)],
+             'y': [(<numba.core.ir.Assign object at 0x000001C62D5D4F90>, 0)]})
+DEBUG:numba.core.ssa:SSA violators <numba.core.utils.OrderedSet object at 0x000001C62D5E0A50>
 DEBUG:numba.core.ssa:Fix SSA violator on var time_register
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E65AEA510>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4590>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -2083,17 +2084,17 @@ DEBUG:numba.core.ssa:on stmt: $174get_iter.29 = getiter(value=$164call.28)
 DEBUG:numba.core.ssa:on stmt: $phi178.0 = $174get_iter.29
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 176
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E65AEA510>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4590>
 DEBUG:numba.core.ssa:on stmt: jump 178
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 178
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E65AEA510>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4590>
 DEBUG:numba.core.ssa:on stmt: $178for_iter.1 = iternext(value=$phi178.0)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.2 = pair_first(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.3 = pair_second(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $phi180.1 = $178for_iter.2
 DEBUG:numba.core.ssa:on stmt: branch $178for_iter.3, 180, 782
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 180
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E65AEA510>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4590>
 DEBUG:numba.core.ssa:on stmt: t = $phi180.1
 DEBUG:numba.core.ssa:on stmt: time_register = getitem(value=t_out, index=t, fn=<built-in function getitem>)
 DEBUG:numba.core.ssa:replaced with: time_register.1 = getitem(value=t_out, index=t, fn=<built-in function getitem>)
@@ -2117,14 +2118,14 @@ DEBUG:numba.core.ssa:on stmt: $372get_iter.39 = getiter(value=$362call.38)
 DEBUG:numba.core.ssa:on stmt: $phi374.1 = $372get_iter.39
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 374
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E65AEA510>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4590>
 DEBUG:numba.core.ssa:on stmt: $374for_iter.2 = iternext(value=$phi374.1)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.3 = pair_first(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.4 = pair_second(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi376.2 = $374for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $374for_iter.4, 376, 500
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 376
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E65AEA510>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4590>
 DEBUG:numba.core.ssa:on stmt: i = $phi376.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul386.7 = i * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add390.8 = offset + $binop_mul386.7
@@ -2142,7 +2143,7 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd486.30 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd486.30
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 500
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E65AEA510>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4590>
 DEBUG:numba.core.ssa:on stmt: $binop_sub504.3 = scale - frac
 DEBUG:numba.core.ssa:on stmt: frac = $binop_sub504.3
 DEBUG:numba.core.ssa:on stmt: index_frac = frac * num_table
@@ -2162,14 +2163,14 @@ DEBUG:numba.core.ssa:on stmt: $644get_iter.31 = getiter(value=$634call.30)
 DEBUG:numba.core.ssa:on stmt: $phi646.1 = $644get_iter.31
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 646
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E65AEA510>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4590>
 DEBUG:numba.core.ssa:on stmt: $646for_iter.2 = iternext(value=$phi646.1)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.3 = pair_first(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.4 = pair_second(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi648.2 = $646for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $646for_iter.4, 648, 778
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 648
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E65AEA510>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4590>
 DEBUG:numba.core.ssa:on stmt: k = $phi648.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul658.7 = k * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add662.8 = offset + $binop_mul658.7
@@ -2189,18 +2190,18 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd764.32 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd764.32
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 778
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E65AEA510>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4590>
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 782
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E65AEA510>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4590>
 DEBUG:numba.core.ssa:on stmt: $const782.0.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $784return_value.1 = cast(value=$const782.0.0)
 DEBUG:numba.core.ssa:on stmt: return $784return_value.1
 DEBUG:numba.core.ssa:Replaced assignments: defaultdict(<class 'list'>,
-            {0: [<numba.core.ir.Assign object at 0x0000023E676098D0>],
-             180: [<numba.core.ir.Assign object at 0x0000023E675E0410>]})
+            {0: [<numba.core.ir.Assign object at 0x000001C62D5D44D0>],
+             180: [<numba.core.ir.Assign object at 0x000001C62C53A990>]})
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D78D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -2233,17 +2234,17 @@ DEBUG:numba.core.ssa:on stmt: $174get_iter.29 = getiter(value=$164call.28)
 DEBUG:numba.core.ssa:on stmt: $phi178.0 = $174get_iter.29
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 176
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D78D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: jump 178
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 178
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D78D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: $178for_iter.1 = iternext(value=$phi178.0)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.2 = pair_first(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.3 = pair_second(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $phi180.1 = $178for_iter.2
 DEBUG:numba.core.ssa:on stmt: branch $178for_iter.3, 180, 782
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 180
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D78D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: t = $phi180.1
 DEBUG:numba.core.ssa:on stmt: time_register.1 = getitem(value=t_out, index=t, fn=<built-in function getitem>)
 DEBUG:numba.core.ssa:on stmt: $198load_global.5 = global(int: <class 'int'>)
@@ -2270,14 +2271,14 @@ DEBUG:numba.core.ssa:on stmt: $372get_iter.39 = getiter(value=$362call.38)
 DEBUG:numba.core.ssa:on stmt: $phi374.1 = $372get_iter.39
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 374
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D78D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: $374for_iter.2 = iternext(value=$phi374.1)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.3 = pair_first(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.4 = pair_second(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi376.2 = $374for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $374for_iter.4, 376, 500
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 376
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D78D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: i = $phi376.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul386.7 = i * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add390.8 = offset + $binop_mul386.7
@@ -2295,7 +2296,7 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd486.30 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd486.30
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 500
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D78D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: $binop_sub504.3 = scale - frac
 DEBUG:numba.core.ssa:on stmt: frac = $binop_sub504.3
 DEBUG:numba.core.ssa:on stmt: index_frac = frac * num_table
@@ -2315,14 +2316,14 @@ DEBUG:numba.core.ssa:on stmt: $644get_iter.31 = getiter(value=$634call.30)
 DEBUG:numba.core.ssa:on stmt: $phi646.1 = $644get_iter.31
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 646
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D78D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: $646for_iter.2 = iternext(value=$phi646.1)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.3 = pair_first(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.4 = pair_second(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi648.2 = $646for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $646for_iter.4, 648, 778
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 648
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D78D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: k = $phi648.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul658.7 = k * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add662.8 = offset + $binop_mul658.7
@@ -2342,16 +2343,16 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd764.32 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd764.32
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 778
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D78D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 782
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D78D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: $const782.0.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $784return_value.1 = cast(value=$const782.0.0)
 DEBUG:numba.core.ssa:on stmt: return $784return_value.1
 DEBUG:numba.core.ssa:Fix SSA violator on var n
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4450>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -2386,17 +2387,17 @@ DEBUG:numba.core.ssa:on stmt: $174get_iter.29 = getiter(value=$164call.28)
 DEBUG:numba.core.ssa:on stmt: $phi178.0 = $174get_iter.29
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 176
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4450>
 DEBUG:numba.core.ssa:on stmt: jump 178
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 178
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4450>
 DEBUG:numba.core.ssa:on stmt: $178for_iter.1 = iternext(value=$phi178.0)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.2 = pair_first(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.3 = pair_second(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $phi180.1 = $178for_iter.2
 DEBUG:numba.core.ssa:on stmt: branch $178for_iter.3, 180, 782
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 180
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4450>
 DEBUG:numba.core.ssa:on stmt: t = $phi180.1
 DEBUG:numba.core.ssa:on stmt: time_register.1 = getitem(value=t_out, index=t, fn=<built-in function getitem>)
 DEBUG:numba.core.ssa:on stmt: $198load_global.5 = global(int: <class 'int'>)
@@ -2420,14 +2421,14 @@ DEBUG:numba.core.ssa:on stmt: $372get_iter.39 = getiter(value=$362call.38)
 DEBUG:numba.core.ssa:on stmt: $phi374.1 = $372get_iter.39
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 374
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4450>
 DEBUG:numba.core.ssa:on stmt: $374for_iter.2 = iternext(value=$phi374.1)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.3 = pair_first(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.4 = pair_second(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi376.2 = $374for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $374for_iter.4, 376, 500
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 376
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4450>
 DEBUG:numba.core.ssa:on stmt: i = $phi376.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul386.7 = i * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add390.8 = offset + $binop_mul386.7
@@ -2445,7 +2446,7 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd486.30 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd486.30
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 500
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4450>
 DEBUG:numba.core.ssa:on stmt: $binop_sub504.3 = scale - frac
 DEBUG:numba.core.ssa:on stmt: frac = $binop_sub504.3
 DEBUG:numba.core.ssa:on stmt: index_frac = frac * num_table
@@ -2465,14 +2466,14 @@ DEBUG:numba.core.ssa:on stmt: $644get_iter.31 = getiter(value=$634call.30)
 DEBUG:numba.core.ssa:on stmt: $phi646.1 = $644get_iter.31
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 646
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4450>
 DEBUG:numba.core.ssa:on stmt: $646for_iter.2 = iternext(value=$phi646.1)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.3 = pair_first(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.4 = pair_second(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi648.2 = $646for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $646for_iter.4, 648, 778
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 648
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4450>
 DEBUG:numba.core.ssa:on stmt: k = $phi648.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul658.7 = k * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add662.8 = offset + $binop_mul658.7
@@ -2492,18 +2493,18 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd764.32 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd764.32
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 778
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4450>
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 782
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5D4450>
 DEBUG:numba.core.ssa:on stmt: $const782.0.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $784return_value.1 = cast(value=$const782.0.0)
 DEBUG:numba.core.ssa:on stmt: return $784return_value.1
 DEBUG:numba.core.ssa:Replaced assignments: defaultdict(<class 'list'>,
-            {0: [<numba.core.ir.Assign object at 0x0000023E67575850>],
-             180: [<numba.core.ir.Assign object at 0x0000023E675DE290>]})
+            {0: [<numba.core.ir.Assign object at 0x000001C62D5D4890>],
+             180: [<numba.core.ir.Assign object at 0x000001C62C539450>]})
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5C4290>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -2536,17 +2537,17 @@ DEBUG:numba.core.ssa:on stmt: $174get_iter.29 = getiter(value=$164call.28)
 DEBUG:numba.core.ssa:on stmt: $phi178.0 = $174get_iter.29
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 176
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5C4290>
 DEBUG:numba.core.ssa:on stmt: jump 178
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 178
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5C4290>
 DEBUG:numba.core.ssa:on stmt: $178for_iter.1 = iternext(value=$phi178.0)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.2 = pair_first(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.3 = pair_second(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $phi180.1 = $178for_iter.2
 DEBUG:numba.core.ssa:on stmt: branch $178for_iter.3, 180, 782
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 180
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5C4290>
 DEBUG:numba.core.ssa:on stmt: t = $phi180.1
 DEBUG:numba.core.ssa:on stmt: time_register.1 = getitem(value=t_out, index=t, fn=<built-in function getitem>)
 DEBUG:numba.core.ssa:on stmt: $198load_global.5 = global(int: <class 'int'>)
@@ -2573,14 +2574,14 @@ DEBUG:numba.core.ssa:on stmt: $372get_iter.39 = getiter(value=$362call.38)
 DEBUG:numba.core.ssa:on stmt: $phi374.1 = $372get_iter.39
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 374
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5C4290>
 DEBUG:numba.core.ssa:on stmt: $374for_iter.2 = iternext(value=$phi374.1)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.3 = pair_first(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.4 = pair_second(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi376.2 = $374for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $374for_iter.4, 376, 500
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 376
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5C4290>
 DEBUG:numba.core.ssa:on stmt: i = $phi376.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul386.7 = i * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add390.8 = offset + $binop_mul386.7
@@ -2606,7 +2607,7 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd486.30 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd486.30
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 500
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5C4290>
 DEBUG:numba.core.ssa:on stmt: $binop_sub504.3 = scale - frac
 DEBUG:numba.core.ssa:on stmt: frac = $binop_sub504.3
 DEBUG:numba.core.ssa:on stmt: index_frac = frac * num_table
@@ -2634,14 +2635,14 @@ DEBUG:numba.core.ssa:on stmt: $644get_iter.31 = getiter(value=$634call.30)
 DEBUG:numba.core.ssa:on stmt: $phi646.1 = $644get_iter.31
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 646
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5C4290>
 DEBUG:numba.core.ssa:on stmt: $646for_iter.2 = iternext(value=$phi646.1)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.3 = pair_first(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.4 = pair_second(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi648.2 = $646for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $646for_iter.4, 648, 778
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 648
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5C4290>
 DEBUG:numba.core.ssa:on stmt: k = $phi648.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul658.7 = k * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add662.8 = offset + $binop_mul658.7
@@ -2675,16 +2676,16 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd764.32 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd764.32
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 778
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5C4290>
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 782
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5C4290>
 DEBUG:numba.core.ssa:on stmt: $const782.0.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $784return_value.1 = cast(value=$const782.0.0)
 DEBUG:numba.core.ssa:on stmt: return $784return_value.1
 DEBUG:numba.core.ssa:Fix SSA violator on var frac
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -2719,17 +2720,17 @@ DEBUG:numba.core.ssa:on stmt: $174get_iter.29 = getiter(value=$164call.28)
 DEBUG:numba.core.ssa:on stmt: $phi178.0 = $174get_iter.29
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 176
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: jump 178
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 178
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: $178for_iter.1 = iternext(value=$phi178.0)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.2 = pair_first(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.3 = pair_second(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $phi180.1 = $178for_iter.2
 DEBUG:numba.core.ssa:on stmt: branch $178for_iter.3, 180, 782
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 180
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: t = $phi180.1
 DEBUG:numba.core.ssa:on stmt: time_register.1 = getitem(value=t_out, index=t, fn=<built-in function getitem>)
 DEBUG:numba.core.ssa:on stmt: $198load_global.5 = global(int: <class 'int'>)
@@ -2753,14 +2754,14 @@ DEBUG:numba.core.ssa:on stmt: $372get_iter.39 = getiter(value=$362call.38)
 DEBUG:numba.core.ssa:on stmt: $phi374.1 = $372get_iter.39
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 374
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: $374for_iter.2 = iternext(value=$phi374.1)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.3 = pair_first(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.4 = pair_second(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi376.2 = $374for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $374for_iter.4, 376, 500
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 376
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: i = $phi376.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul386.7 = i * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add390.8 = offset + $binop_mul386.7
@@ -2778,7 +2779,7 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd486.30 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd486.30
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 500
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: $binop_sub504.3 = scale - frac
 DEBUG:numba.core.ssa:on stmt: frac = $binop_sub504.3
 DEBUG:numba.core.ssa:replaced with: frac.2 = $binop_sub504.3
@@ -2799,14 +2800,14 @@ DEBUG:numba.core.ssa:on stmt: $644get_iter.31 = getiter(value=$634call.30)
 DEBUG:numba.core.ssa:on stmt: $phi646.1 = $644get_iter.31
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 646
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: $646for_iter.2 = iternext(value=$phi646.1)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.3 = pair_first(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.4 = pair_second(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi648.2 = $646for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $646for_iter.4, 648, 778
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 648
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: k = $phi648.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul658.7 = k * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add662.8 = offset + $binop_mul658.7
@@ -2826,19 +2827,19 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd764.32 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd764.32
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 778
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 782
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538110>
 DEBUG:numba.core.ssa:on stmt: $const782.0.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $784return_value.1 = cast(value=$const782.0.0)
 DEBUG:numba.core.ssa:on stmt: return $784return_value.1
 DEBUG:numba.core.ssa:Replaced assignments: defaultdict(<class 'list'>,
-            {0: [<numba.core.ir.Assign object at 0x0000023E675D6650>],
-             180: [<numba.core.ir.Assign object at 0x0000023E67577550>],
-             500: [<numba.core.ir.Assign object at 0x0000023E675F1B90>]})
+            {0: [<numba.core.ir.Assign object at 0x000001C62D5D4310>],
+             180: [<numba.core.ir.Assign object at 0x000001C62C546290>],
+             500: [<numba.core.ir.Assign object at 0x000001C62C5456D0>]})
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E664A6BD0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -2871,17 +2872,17 @@ DEBUG:numba.core.ssa:on stmt: $174get_iter.29 = getiter(value=$164call.28)
 DEBUG:numba.core.ssa:on stmt: $phi178.0 = $174get_iter.29
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 176
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E664A6BD0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: jump 178
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 178
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E664A6BD0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: $178for_iter.1 = iternext(value=$phi178.0)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.2 = pair_first(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.3 = pair_second(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $phi180.1 = $178for_iter.2
 DEBUG:numba.core.ssa:on stmt: branch $178for_iter.3, 180, 782
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 180
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E664A6BD0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: t = $phi180.1
 DEBUG:numba.core.ssa:on stmt: time_register.1 = getitem(value=t_out, index=t, fn=<built-in function getitem>)
 DEBUG:numba.core.ssa:on stmt: $198load_global.5 = global(int: <class 'int'>)
@@ -2906,14 +2907,14 @@ DEBUG:numba.core.ssa:on stmt: $372get_iter.39 = getiter(value=$362call.38)
 DEBUG:numba.core.ssa:on stmt: $phi374.1 = $372get_iter.39
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 374
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E664A6BD0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: $374for_iter.2 = iternext(value=$phi374.1)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.3 = pair_first(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.4 = pair_second(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi376.2 = $374for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $374for_iter.4, 376, 500
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 376
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E664A6BD0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: i = $phi376.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul386.7 = i * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add390.8 = offset + $binop_mul386.7
@@ -2931,7 +2932,7 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd486.30 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd486.30
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 500
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E664A6BD0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: $binop_sub504.3 = scale - frac
 DEBUG:numba.core.ssa:find_def var='frac' stmt=$binop_sub504.3 = scale - frac
 DEBUG:numba.core.ssa:find_def_from_top label 500
@@ -2961,14 +2962,14 @@ DEBUG:numba.core.ssa:on stmt: $644get_iter.31 = getiter(value=$634call.30)
 DEBUG:numba.core.ssa:on stmt: $phi646.1 = $644get_iter.31
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 646
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E664A6BD0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: $646for_iter.2 = iternext(value=$phi646.1)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.3 = pair_first(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.4 = pair_second(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi648.2 = $646for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $646for_iter.4, 648, 778
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 648
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E664A6BD0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: k = $phi648.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul658.7 = k * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add662.8 = offset + $binop_mul658.7
@@ -2988,16 +2989,16 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd764.32 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd764.32
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 778
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E664A6BD0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 782
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E664A6BD0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: $const782.0.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $784return_value.1 = cast(value=$const782.0.0)
 DEBUG:numba.core.ssa:on stmt: return $784return_value.1
 DEBUG:numba.core.ssa:Fix SSA violator on var index_frac
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -3032,17 +3033,17 @@ DEBUG:numba.core.ssa:on stmt: $174get_iter.29 = getiter(value=$164call.28)
 DEBUG:numba.core.ssa:on stmt: $phi178.0 = $174get_iter.29
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 176
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: jump 178
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 178
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: $178for_iter.1 = iternext(value=$phi178.0)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.2 = pair_first(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.3 = pair_second(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $phi180.1 = $178for_iter.2
 DEBUG:numba.core.ssa:on stmt: branch $178for_iter.3, 180, 782
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 180
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: t = $phi180.1
 DEBUG:numba.core.ssa:on stmt: time_register.1 = getitem(value=t_out, index=t, fn=<built-in function getitem>)
 DEBUG:numba.core.ssa:on stmt: $198load_global.5 = global(int: <class 'int'>)
@@ -3066,14 +3067,14 @@ DEBUG:numba.core.ssa:on stmt: $372get_iter.39 = getiter(value=$362call.38)
 DEBUG:numba.core.ssa:on stmt: $phi374.1 = $372get_iter.39
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 374
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: $374for_iter.2 = iternext(value=$phi374.1)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.3 = pair_first(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.4 = pair_second(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi376.2 = $374for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $374for_iter.4, 376, 500
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 376
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: i = $phi376.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul386.7 = i * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add390.8 = offset + $binop_mul386.7
@@ -3091,7 +3092,7 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd486.30 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd486.30
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 500
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: $binop_sub504.3 = scale - frac.1
 DEBUG:numba.core.ssa:on stmt: frac.2 = $binop_sub504.3
 DEBUG:numba.core.ssa:on stmt: index_frac = frac.2 * num_table
@@ -3112,14 +3113,14 @@ DEBUG:numba.core.ssa:on stmt: $644get_iter.31 = getiter(value=$634call.30)
 DEBUG:numba.core.ssa:on stmt: $phi646.1 = $644get_iter.31
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 646
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: $646for_iter.2 = iternext(value=$phi646.1)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.3 = pair_first(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.4 = pair_second(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi648.2 = $646for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $646for_iter.4, 648, 778
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 648
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: k = $phi648.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul658.7 = k * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add662.8 = offset + $binop_mul658.7
@@ -3139,19 +3140,19 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd764.32 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd764.32
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 778
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 782
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: $const782.0.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $784return_value.1 = cast(value=$const782.0.0)
 DEBUG:numba.core.ssa:on stmt: return $784return_value.1
 DEBUG:numba.core.ssa:Replaced assignments: defaultdict(<class 'list'>,
-            {0: [<numba.core.ir.Assign object at 0x0000023E675E7510>],
-             180: [<numba.core.ir.Assign object at 0x0000023E675F0690>],
-             500: [<numba.core.ir.Assign object at 0x0000023E675F1ED0>]})
+            {0: [<numba.core.ir.Assign object at 0x000001C62C538E50>],
+             180: [<numba.core.ir.Assign object at 0x000001C62C5458D0>],
+             500: [<numba.core.ir.Assign object at 0x000001C62C546210>]})
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5AFF10>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -3184,17 +3185,17 @@ DEBUG:numba.core.ssa:on stmt: $174get_iter.29 = getiter(value=$164call.28)
 DEBUG:numba.core.ssa:on stmt: $phi178.0 = $174get_iter.29
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 176
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5AFF10>
 DEBUG:numba.core.ssa:on stmt: jump 178
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 178
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5AFF10>
 DEBUG:numba.core.ssa:on stmt: $178for_iter.1 = iternext(value=$phi178.0)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.2 = pair_first(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.3 = pair_second(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $phi180.1 = $178for_iter.2
 DEBUG:numba.core.ssa:on stmt: branch $178for_iter.3, 180, 782
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 180
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5AFF10>
 DEBUG:numba.core.ssa:on stmt: t = $phi180.1
 DEBUG:numba.core.ssa:on stmt: time_register.1 = getitem(value=t_out, index=t, fn=<built-in function getitem>)
 DEBUG:numba.core.ssa:on stmt: $198load_global.5 = global(int: <class 'int'>)
@@ -3221,14 +3222,14 @@ DEBUG:numba.core.ssa:on stmt: $372get_iter.39 = getiter(value=$362call.38)
 DEBUG:numba.core.ssa:on stmt: $phi374.1 = $372get_iter.39
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 374
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5AFF10>
 DEBUG:numba.core.ssa:on stmt: $374for_iter.2 = iternext(value=$phi374.1)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.3 = pair_first(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.4 = pair_second(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi376.2 = $374for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $374for_iter.4, 376, 500
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 376
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5AFF10>
 DEBUG:numba.core.ssa:on stmt: i = $phi376.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul386.7 = i * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add390.8 = offset + $binop_mul386.7
@@ -3246,7 +3247,7 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd486.30 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd486.30
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 500
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5AFF10>
 DEBUG:numba.core.ssa:on stmt: $binop_sub504.3 = scale - frac.1
 DEBUG:numba.core.ssa:on stmt: frac.2 = $binop_sub504.3
 DEBUG:numba.core.ssa:on stmt: index_frac.2 = frac.2 * num_table
@@ -3270,14 +3271,14 @@ DEBUG:numba.core.ssa:on stmt: $644get_iter.31 = getiter(value=$634call.30)
 DEBUG:numba.core.ssa:on stmt: $phi646.1 = $644get_iter.31
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 646
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5AFF10>
 DEBUG:numba.core.ssa:on stmt: $646for_iter.2 = iternext(value=$phi646.1)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.3 = pair_first(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.4 = pair_second(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi648.2 = $646for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $646for_iter.4, 648, 778
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 648
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5AFF10>
 DEBUG:numba.core.ssa:on stmt: k = $phi648.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul658.7 = k * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add662.8 = offset + $binop_mul658.7
@@ -3297,16 +3298,16 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd764.32 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd764.32
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 778
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5AFF10>
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 782
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D66D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62D5AFF10>
 DEBUG:numba.core.ssa:on stmt: $const782.0.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $784return_value.1 = cast(value=$const782.0.0)
 DEBUG:numba.core.ssa:on stmt: return $784return_value.1
 DEBUG:numba.core.ssa:Fix SSA violator on var offset
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675BFC50>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -3341,17 +3342,17 @@ DEBUG:numba.core.ssa:on stmt: $174get_iter.29 = getiter(value=$164call.28)
 DEBUG:numba.core.ssa:on stmt: $phi178.0 = $174get_iter.29
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 176
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675BFC50>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: jump 178
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 178
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675BFC50>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: $178for_iter.1 = iternext(value=$phi178.0)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.2 = pair_first(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.3 = pair_second(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $phi180.1 = $178for_iter.2
 DEBUG:numba.core.ssa:on stmt: branch $178for_iter.3, 180, 782
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 180
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675BFC50>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: t = $phi180.1
 DEBUG:numba.core.ssa:on stmt: time_register.1 = getitem(value=t_out, index=t, fn=<built-in function getitem>)
 DEBUG:numba.core.ssa:on stmt: $198load_global.5 = global(int: <class 'int'>)
@@ -3375,14 +3376,14 @@ DEBUG:numba.core.ssa:on stmt: $372get_iter.39 = getiter(value=$362call.38)
 DEBUG:numba.core.ssa:on stmt: $phi374.1 = $372get_iter.39
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 374
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675BFC50>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: $374for_iter.2 = iternext(value=$phi374.1)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.3 = pair_first(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.4 = pair_second(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi376.2 = $374for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $374for_iter.4, 376, 500
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 376
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675BFC50>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: i = $phi376.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul386.7 = i * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add390.8 = offset + $binop_mul386.7
@@ -3400,7 +3401,7 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd486.30 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd486.30
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 500
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675BFC50>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: $binop_sub504.3 = scale - frac.1
 DEBUG:numba.core.ssa:on stmt: frac.2 = $binop_sub504.3
 DEBUG:numba.core.ssa:on stmt: index_frac.2 = frac.2 * num_table
@@ -3421,14 +3422,14 @@ DEBUG:numba.core.ssa:on stmt: $644get_iter.31 = getiter(value=$634call.30)
 DEBUG:numba.core.ssa:on stmt: $phi646.1 = $644get_iter.31
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 646
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675BFC50>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: $646for_iter.2 = iternext(value=$phi646.1)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.3 = pair_first(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.4 = pair_second(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi648.2 = $646for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $646for_iter.4, 648, 778
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 648
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675BFC50>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: k = $phi648.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul658.7 = k * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add662.8 = offset + $binop_mul658.7
@@ -3448,19 +3449,19 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd764.32 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd764.32
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 778
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675BFC50>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 782
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675BFC50>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5ADA90>
 DEBUG:numba.core.ssa:on stmt: $const782.0.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $784return_value.1 = cast(value=$const782.0.0)
 DEBUG:numba.core.ssa:on stmt: return $784return_value.1
 DEBUG:numba.core.ssa:Replaced assignments: defaultdict(<class 'list'>,
-            {0: [<numba.core.ir.Assign object at 0x0000023E675D63D0>],
-             180: [<numba.core.ir.Assign object at 0x0000023E675F1A90>],
-             500: [<numba.core.ir.Assign object at 0x0000023E675F2F90>]})
+            {0: [<numba.core.ir.Assign object at 0x000001C62C546990>],
+             180: [<numba.core.ir.Assign object at 0x000001C62C5440D0>],
+             500: [<numba.core.ir.Assign object at 0x000001C62D5BFC90>]})
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D4A90>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C545550>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -3493,17 +3494,17 @@ DEBUG:numba.core.ssa:on stmt: $174get_iter.29 = getiter(value=$164call.28)
 DEBUG:numba.core.ssa:on stmt: $phi178.0 = $174get_iter.29
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 176
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D4A90>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C545550>
 DEBUG:numba.core.ssa:on stmt: jump 178
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 178
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D4A90>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C545550>
 DEBUG:numba.core.ssa:on stmt: $178for_iter.1 = iternext(value=$phi178.0)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.2 = pair_first(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.3 = pair_second(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $phi180.1 = $178for_iter.2
 DEBUG:numba.core.ssa:on stmt: branch $178for_iter.3, 180, 782
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 180
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D4A90>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C545550>
 DEBUG:numba.core.ssa:on stmt: t = $phi180.1
 DEBUG:numba.core.ssa:on stmt: time_register.1 = getitem(value=t_out, index=t, fn=<built-in function getitem>)
 DEBUG:numba.core.ssa:on stmt: $198load_global.5 = global(int: <class 'int'>)
@@ -3530,14 +3531,14 @@ DEBUG:numba.core.ssa:on stmt: $372get_iter.39 = getiter(value=$362call.38)
 DEBUG:numba.core.ssa:on stmt: $phi374.1 = $372get_iter.39
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 374
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D4A90>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C545550>
 DEBUG:numba.core.ssa:on stmt: $374for_iter.2 = iternext(value=$phi374.1)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.3 = pair_first(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.4 = pair_second(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi376.2 = $374for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $374for_iter.4, 376, 500
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 376
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D4A90>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C545550>
 DEBUG:numba.core.ssa:on stmt: i = $phi376.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul386.7 = i * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add390.8 = offset + $binop_mul386.7
@@ -3571,7 +3572,7 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd486.30 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd486.30
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 500
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D4A90>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C545550>
 DEBUG:numba.core.ssa:on stmt: $binop_sub504.3 = scale - frac.1
 DEBUG:numba.core.ssa:on stmt: frac.2 = $binop_sub504.3
 DEBUG:numba.core.ssa:on stmt: index_frac.2 = frac.2 * num_table
@@ -3595,14 +3596,14 @@ DEBUG:numba.core.ssa:on stmt: $644get_iter.31 = getiter(value=$634call.30)
 DEBUG:numba.core.ssa:on stmt: $phi646.1 = $644get_iter.31
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 646
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D4A90>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C545550>
 DEBUG:numba.core.ssa:on stmt: $646for_iter.2 = iternext(value=$phi646.1)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.3 = pair_first(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.4 = pair_second(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi648.2 = $646for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $646for_iter.4, 648, 778
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 648
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D4A90>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C545550>
 DEBUG:numba.core.ssa:on stmt: k = $phi648.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul658.7 = k * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add662.8 = offset + $binop_mul658.7
@@ -3638,16 +3639,16 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd764.32 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd764.32
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 778
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D4A90>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C545550>
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 782
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D4A90>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C545550>
 DEBUG:numba.core.ssa:on stmt: $const782.0.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $784return_value.1 = cast(value=$const782.0.0)
 DEBUG:numba.core.ssa:on stmt: return $784return_value.1
 DEBUG:numba.core.ssa:Fix SSA violator on var eta
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675F2A10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5BC710>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -3682,17 +3683,17 @@ DEBUG:numba.core.ssa:on stmt: $174get_iter.29 = getiter(value=$164call.28)
 DEBUG:numba.core.ssa:on stmt: $phi178.0 = $174get_iter.29
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 176
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675F2A10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5BC710>
 DEBUG:numba.core.ssa:on stmt: jump 178
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 178
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675F2A10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5BC710>
 DEBUG:numba.core.ssa:on stmt: $178for_iter.1 = iternext(value=$phi178.0)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.2 = pair_first(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.3 = pair_second(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $phi180.1 = $178for_iter.2
 DEBUG:numba.core.ssa:on stmt: branch $178for_iter.3, 180, 782
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 180
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675F2A10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5BC710>
 DEBUG:numba.core.ssa:on stmt: t = $phi180.1
 DEBUG:numba.core.ssa:on stmt: time_register.1 = getitem(value=t_out, index=t, fn=<built-in function getitem>)
 DEBUG:numba.core.ssa:on stmt: $198load_global.5 = global(int: <class 'int'>)
@@ -3716,14 +3717,14 @@ DEBUG:numba.core.ssa:on stmt: $372get_iter.39 = getiter(value=$362call.38)
 DEBUG:numba.core.ssa:on stmt: $phi374.1 = $372get_iter.39
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 374
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675F2A10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5BC710>
 DEBUG:numba.core.ssa:on stmt: $374for_iter.2 = iternext(value=$phi374.1)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.3 = pair_first(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.4 = pair_second(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi376.2 = $374for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $374for_iter.4, 376, 500
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 376
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675F2A10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5BC710>
 DEBUG:numba.core.ssa:on stmt: i = $phi376.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul386.7 = i * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add390.8 = offset.1 + $binop_mul386.7
@@ -3741,7 +3742,7 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd486.30 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd486.30
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 500
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675F2A10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5BC710>
 DEBUG:numba.core.ssa:on stmt: $binop_sub504.3 = scale - frac.1
 DEBUG:numba.core.ssa:on stmt: frac.2 = $binop_sub504.3
 DEBUG:numba.core.ssa:on stmt: index_frac.2 = frac.2 * num_table
@@ -3762,14 +3763,14 @@ DEBUG:numba.core.ssa:on stmt: $644get_iter.31 = getiter(value=$634call.30)
 DEBUG:numba.core.ssa:on stmt: $phi646.1 = $644get_iter.31
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 646
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675F2A10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5BC710>
 DEBUG:numba.core.ssa:on stmt: $646for_iter.2 = iternext(value=$phi646.1)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.3 = pair_first(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.4 = pair_second(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi648.2 = $646for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $646for_iter.4, 648, 778
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 648
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675F2A10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5BC710>
 DEBUG:numba.core.ssa:on stmt: k = $phi648.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul658.7 = k * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add662.8 = offset.2 + $binop_mul658.7
@@ -3789,19 +3790,19 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd764.32 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd764.32
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 778
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675F2A10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5BC710>
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 782
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675F2A10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62D5BC710>
 DEBUG:numba.core.ssa:on stmt: $const782.0.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $784return_value.1 = cast(value=$const782.0.0)
 DEBUG:numba.core.ssa:on stmt: return $784return_value.1
 DEBUG:numba.core.ssa:Replaced assignments: defaultdict(<class 'list'>,
-            {0: [<numba.core.ir.Assign object at 0x0000023E675F2510>],
-             180: [<numba.core.ir.Assign object at 0x0000023E675F20D0>],
-             500: [<numba.core.ir.Assign object at 0x0000023E6757C490>]})
+            {0: [<numba.core.ir.Assign object at 0x000001C62D5BD350>],
+             180: [<numba.core.ir.Assign object at 0x000001C62C546CD0>],
+             500: [<numba.core.ir.Assign object at 0x000001C62C4FE610>]})
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -3834,17 +3835,17 @@ DEBUG:numba.core.ssa:on stmt: $174get_iter.29 = getiter(value=$164call.28)
 DEBUG:numba.core.ssa:on stmt: $phi178.0 = $174get_iter.29
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 176
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: jump 178
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 178
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: $178for_iter.1 = iternext(value=$phi178.0)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.2 = pair_first(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.3 = pair_second(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $phi180.1 = $178for_iter.2
 DEBUG:numba.core.ssa:on stmt: branch $178for_iter.3, 180, 782
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 180
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: t = $phi180.1
 DEBUG:numba.core.ssa:on stmt: time_register.1 = getitem(value=t_out, index=t, fn=<built-in function getitem>)
 DEBUG:numba.core.ssa:on stmt: $198load_global.5 = global(int: <class 'int'>)
@@ -3867,14 +3868,14 @@ DEBUG:numba.core.ssa:on stmt: $372get_iter.39 = getiter(value=$362call.38)
 DEBUG:numba.core.ssa:on stmt: $phi374.1 = $372get_iter.39
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 374
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: $374for_iter.2 = iternext(value=$phi374.1)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.3 = pair_first(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.4 = pair_second(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi376.2 = $374for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $374for_iter.4, 376, 500
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 376
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: i = $phi376.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul386.7 = i * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add390.8 = offset.1 + $binop_mul386.7
@@ -3900,7 +3901,7 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd486.30 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd486.30
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 500
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: $binop_sub504.3 = scale - frac.1
 DEBUG:numba.core.ssa:on stmt: frac.2 = $binop_sub504.3
 DEBUG:numba.core.ssa:on stmt: index_frac.2 = frac.2 * num_table
@@ -3920,14 +3921,14 @@ DEBUG:numba.core.ssa:on stmt: $644get_iter.31 = getiter(value=$634call.30)
 DEBUG:numba.core.ssa:on stmt: $phi646.1 = $644get_iter.31
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 646
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: $646for_iter.2 = iternext(value=$phi646.1)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.3 = pair_first(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.4 = pair_second(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi648.2 = $646for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $646for_iter.4, 648, 778
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 648
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: k = $phi648.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul658.7 = k * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add662.8 = offset.2 + $binop_mul658.7
@@ -3955,16 +3956,16 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd764.32 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd764.32
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 778
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 782
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675754D0>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C538150>
 DEBUG:numba.core.ssa:on stmt: $const782.0.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $784return_value.1 = cast(value=$const782.0.0)
 DEBUG:numba.core.ssa:on stmt: return $784return_value.1
 DEBUG:numba.core.ssa:Fix SSA violator on var weight
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D6690>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C4FE210>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -3999,17 +4000,17 @@ DEBUG:numba.core.ssa:on stmt: $174get_iter.29 = getiter(value=$164call.28)
 DEBUG:numba.core.ssa:on stmt: $phi178.0 = $174get_iter.29
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 176
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D6690>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C4FE210>
 DEBUG:numba.core.ssa:on stmt: jump 178
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 178
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D6690>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C4FE210>
 DEBUG:numba.core.ssa:on stmt: $178for_iter.1 = iternext(value=$phi178.0)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.2 = pair_first(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.3 = pair_second(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $phi180.1 = $178for_iter.2
 DEBUG:numba.core.ssa:on stmt: branch $178for_iter.3, 180, 782
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 180
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D6690>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C4FE210>
 DEBUG:numba.core.ssa:on stmt: t = $phi180.1
 DEBUG:numba.core.ssa:on stmt: time_register.1 = getitem(value=t_out, index=t, fn=<built-in function getitem>)
 DEBUG:numba.core.ssa:on stmt: $198load_global.5 = global(int: <class 'int'>)
@@ -4032,14 +4033,14 @@ DEBUG:numba.core.ssa:on stmt: $372get_iter.39 = getiter(value=$362call.38)
 DEBUG:numba.core.ssa:on stmt: $phi374.1 = $372get_iter.39
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 374
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D6690>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C4FE210>
 DEBUG:numba.core.ssa:on stmt: $374for_iter.2 = iternext(value=$phi374.1)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.3 = pair_first(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.4 = pair_second(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi376.2 = $374for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $374for_iter.4, 376, 500
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 376
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D6690>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C4FE210>
 DEBUG:numba.core.ssa:on stmt: i = $phi376.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul386.7 = i * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add390.8 = offset.1 + $binop_mul386.7
@@ -4058,7 +4059,7 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd486.30 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd486.30
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 500
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D6690>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C4FE210>
 DEBUG:numba.core.ssa:on stmt: $binop_sub504.3 = scale - frac.1
 DEBUG:numba.core.ssa:on stmt: frac.2 = $binop_sub504.3
 DEBUG:numba.core.ssa:on stmt: index_frac.2 = frac.2 * num_table
@@ -4078,14 +4079,14 @@ DEBUG:numba.core.ssa:on stmt: $644get_iter.31 = getiter(value=$634call.30)
 DEBUG:numba.core.ssa:on stmt: $phi646.1 = $644get_iter.31
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 646
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D6690>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C4FE210>
 DEBUG:numba.core.ssa:on stmt: $646for_iter.2 = iternext(value=$phi646.1)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.3 = pair_first(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.4 = pair_second(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi648.2 = $646for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $646for_iter.4, 648, 778
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 648
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D6690>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C4FE210>
 DEBUG:numba.core.ssa:on stmt: k = $phi648.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul658.7 = k * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add662.8 = offset.2 + $binop_mul658.7
@@ -4106,19 +4107,19 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd764.32 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd764.32
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 778
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D6690>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C4FE210>
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 782
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x0000023E675D6690>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FreshVarHandler object at 0x000001C62C4FE210>
 DEBUG:numba.core.ssa:on stmt: $const782.0.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $784return_value.1 = cast(value=$const782.0.0)
 DEBUG:numba.core.ssa:on stmt: return $784return_value.1
 DEBUG:numba.core.ssa:Replaced assignments: defaultdict(<class 'list'>,
-            {0: [<numba.core.ir.Assign object at 0x0000023E675754D0>],
-             376: [<numba.core.ir.Assign object at 0x0000023E6757DAD0>],
-             648: [<numba.core.ir.Assign object at 0x0000023E6757C050>]})
+            {0: [<numba.core.ir.Assign object at 0x000001C62C4FDB50>],
+             376: [<numba.core.ir.Assign object at 0x000001C62C4C5090>],
+             648: [<numba.core.ir.Assign object at 0x000001C62C537C50>]})
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 0
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D6F10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C50A750>
 DEBUG:numba.core.ssa:on stmt: x = arg(0, name=x)
 DEBUG:numba.core.ssa:on stmt: t_out = arg(1, name=t_out)
 DEBUG:numba.core.ssa:on stmt: interp_win = arg(2, name=interp_win)
@@ -4151,17 +4152,17 @@ DEBUG:numba.core.ssa:on stmt: $174get_iter.29 = getiter(value=$164call.28)
 DEBUG:numba.core.ssa:on stmt: $phi178.0 = $174get_iter.29
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 176
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D6F10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C50A750>
 DEBUG:numba.core.ssa:on stmt: jump 178
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 178
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D6F10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C50A750>
 DEBUG:numba.core.ssa:on stmt: $178for_iter.1 = iternext(value=$phi178.0)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.2 = pair_first(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $178for_iter.3 = pair_second(value=$178for_iter.1)
 DEBUG:numba.core.ssa:on stmt: $phi180.1 = $178for_iter.2
 DEBUG:numba.core.ssa:on stmt: branch $178for_iter.3, 180, 782
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 180
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D6F10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C50A750>
 DEBUG:numba.core.ssa:on stmt: t = $phi180.1
 DEBUG:numba.core.ssa:on stmt: time_register.1 = getitem(value=t_out, index=t, fn=<built-in function getitem>)
 DEBUG:numba.core.ssa:on stmt: $198load_global.5 = global(int: <class 'int'>)
@@ -4184,14 +4185,14 @@ DEBUG:numba.core.ssa:on stmt: $372get_iter.39 = getiter(value=$362call.38)
 DEBUG:numba.core.ssa:on stmt: $phi374.1 = $372get_iter.39
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 374
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D6F10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C50A750>
 DEBUG:numba.core.ssa:on stmt: $374for_iter.2 = iternext(value=$phi374.1)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.3 = pair_first(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $374for_iter.4 = pair_second(value=$374for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi376.2 = $374for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $374for_iter.4, 376, 500
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 376
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D6F10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C50A750>
 DEBUG:numba.core.ssa:on stmt: i = $phi376.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul386.7 = i * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add390.8 = offset.1 + $binop_mul386.7
@@ -4211,7 +4212,7 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd486.30 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd486.30
 DEBUG:numba.core.ssa:on stmt: jump 374
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 500
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D6F10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C50A750>
 DEBUG:numba.core.ssa:on stmt: $binop_sub504.3 = scale - frac.1
 DEBUG:numba.core.ssa:on stmt: frac.2 = $binop_sub504.3
 DEBUG:numba.core.ssa:on stmt: index_frac.2 = frac.2 * num_table
@@ -4231,14 +4232,14 @@ DEBUG:numba.core.ssa:on stmt: $644get_iter.31 = getiter(value=$634call.30)
 DEBUG:numba.core.ssa:on stmt: $phi646.1 = $644get_iter.31
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 646
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D6F10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C50A750>
 DEBUG:numba.core.ssa:on stmt: $646for_iter.2 = iternext(value=$phi646.1)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.3 = pair_first(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $646for_iter.4 = pair_second(value=$646for_iter.2)
 DEBUG:numba.core.ssa:on stmt: $phi648.2 = $646for_iter.3
 DEBUG:numba.core.ssa:on stmt: branch $646for_iter.4, 648, 778
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 648
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D6F10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C50A750>
 DEBUG:numba.core.ssa:on stmt: k = $phi648.2
 DEBUG:numba.core.ssa:on stmt: $binop_mul658.7 = k * index_step
 DEBUG:numba.core.ssa:on stmt: $binop_add662.8 = offset.2 + $binop_mul658.7
@@ -4260,21 +4261,19 @@ DEBUG:numba.core.ssa:on stmt: $binop_iadd764.32 = inplace_binop(fn=<built-in fun
 DEBUG:numba.core.ssa:on stmt: y[t] = $binop_iadd764.32
 DEBUG:numba.core.ssa:on stmt: jump 646
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 778
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D6F10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C50A750>
 DEBUG:numba.core.ssa:on stmt: jump 176
 DEBUG:numba.core.ssa:==== SSA block rewrite pass on 782
-DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x0000023E675D6F10>
+DEBUG:numba.core.ssa:Running <numba.core.ssa._FixSSAVars object at 0x000001C62C50A750>
 DEBUG:numba.core.ssa:on stmt: $const782.0.0 = const(NoneType, None)
 DEBUG:numba.core.ssa:on stmt: $784return_value.1 = cast(value=$const782.0.0)
 DEBUG:numba.core.ssa:on stmt: return $784return_value.1
-DEBUG:root:send audio data 1748516541.077280
-DEBUG:root:send audio data 1748516543.436517
-DEBUG:root:send audio data 1748516546.896596
-DEBUG:root:send audio data 1748516549.586175
-DEBUG:root:send audio data 1748516552.847469
-DEBUG:root:send audio data 1748516556.047043
-DEBUG:root:send audio data 1748516561.807152
-DEBUG:root:send audio data 1748516564.757538
-DEBUG:root:send audio data 1748516566.867771
-DEBUG:root:send audio data 1748516573.647693
-DEBUG:root:send audio data 1748516586.767909
+DEBUG:root:send audio data 1748529258.713742
+DEBUG:root:send audio data 1748529261.724057
+DEBUG:root:send audio data 1748529264.793894
+DEBUG:root:send audio data 1748529267.804584
+DEBUG:root:send audio data 1748529270.814271
+DEBUG:root:send audio data 1748529281.054560
+DEBUG:root:send audio data 1748529293.014078
+DEBUG:root:send audio data 1748529294.875121
+DEBUG:root:send audio data 1748529305.115314

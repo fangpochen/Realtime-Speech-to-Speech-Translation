@@ -17,7 +17,7 @@ class GPTSoVITSConfig:
         self.top_k = 15               # int, Screenshot: 15 (API Default: 5)
         self.top_p = 1.0             # float, Screenshot: 1 (API Default: 1.0)
         self.temperature = 1.0       # float, Screenshot: 1 (API Default: 1.0)
-        self.sample_steps = "64"      # str, Screenshot: 8 (API Default: "32")
+        self.sample_steps = "32"      # str, Screenshot: 8 (API Default: "32")
         
         # 文本处理与切分
         self.text_split_method = "凑四句一切" # str, Screenshot: "凑四句一切" (API Default: "凑四句一切")
@@ -33,7 +33,7 @@ class GPTSoVITSConfig:
         self.super_sampling = False  # bool, Screenshot: False (API Default: False)
 
         # 高级/性能参数
-        self.batch_size = 50.0         # float, Screenshot: 25 (API Default: 20.0)
+        self.batch_size = 25.0         # float, Screenshot: 25 (API Default: 20.0)
         self.split_bucket = True       # bool, Screenshot: True (API Default: True)
         self.parallel_infer = True     # bool, Screenshot: True (API Default: True)
         self.repetition_penalty = 1.35 # float, Screenshot: 1.35 (API Default: 1.35)

@@ -56,6 +56,7 @@ class AudioSocketClient:
         self.volume_output = 0
         # How much time since the last received packet to refresh the flush
         self.time_flush_received = 2
+        self.time_phrase_sent = None # 用于记录短语发送时间以计算延迟
         threading.Thread(target=self.__debug_worker__, daemon=True).start()
     def __del__(self):
         # Destroy Audio resources
@@ -68,6 +69,7 @@ class AudioSocketClient:
         self.time_last_sent = time.time()
         logging.debug("send audio data %f", self.time_last_sent)
         self.socket.send(data)
+        self.time_phrase_sent = time.time() # 记录短语发送时间
         # convert to np array for volume
         self.volume_input = get_volume_norm(
             convert_and_normalize(np.frombuffer(data, dtype=np.int16))
@@ -151,6 +153,12 @@ class AudioSocketClient:
                         # 这种情况理论上不应由_recv_all_data返回，除非_recv_all_data逻辑有误或中途发生非致命错误
                         # 但为保险起见，保留一个检查和日志
                     
+                    # time_audio_received = time.time() # 记录音频接收时间 # 旧的逻辑，确保它不干扰新的计时
+                    # if self.time_phrase_sent: # 旧的逻辑
+                    #     latency = time_audio_received - self.time_phrase_sent
+                    #     print(f"⏱️ 音频处理延迟: {latency:.3f} 秒 (从发送到接收)")
+                    #     self.time_phrase_sent = None # 旧的重置位置
+                    
                     timestamp = int(time.time())
                     print(f"🟢 完整音频数据接收完毕 (批次 {timestamp})，总大小: {len(full_received_data)} bytes")
                     output_filename = f"client_received_audio_{timestamp}.wav"
@@ -208,6 +216,13 @@ class AudioSocketClient:
                                     #    audio_to_play_float32 = audio_to_play_float32[::2] # 取左声道
 
                                     print(f"   [播放] 准备播放 {len(audio_to_play_float32)} 个采样点 (float32) 至设备 (配置为 {self.PLAYBACK_RATE}Hz)")
+                                    
+                                    time_playback_starts = time.time() # 记录播放开始时间
+                                    if self.time_phrase_sent:
+                                        latency_to_playback = time_playback_starts - self.time_phrase_sent
+                                        print(f"⏱️⏱️ 端到端延迟 (发送 -> 开始播放): {latency_to_playback:.3f} 秒")
+                                        self.time_phrase_sent = None # 重置，为下一段语音计时做准备
+
                                     audio_output.write(audio_to_play_float32)
                                     print(f"   [播放] 音频已发送到播放设备。")
 
